@@ -20,11 +20,12 @@ export const holdingReducer = createSlice({
         },
         updateHolding:(state,action)=>{
             const payload = action.payload;
-            // console.log('hellalsdkfjaslk',payload)
+            console.log('update holding has been triggered',payload)
             
-            // find the stock 
+            // find the stock if user already has the stock 
             var stockIndex;
             // console.log("mila kya index ", stockIndex)
+
             state.holdingArr.find( (stock,index)=>{
                 // console.log(stock.stockSymbol , payload.stockSymbol)
                 if(stock.stockSymbol===payload.stockSymbol){
@@ -35,13 +36,7 @@ export const holdingReducer = createSlice({
                 return null;
             })
             
-            
-            // console.log(stockIndex,payload.boughtQty,stockIndex===null,(stockIndex !=0) ,!(stockIndex))
-
-            // if( (stockIndex>0) || !(stockIndex==0) ){
-
-            // below one this contion is failing when there is only one or when the element with index 0 is clicked 
-            // if( !(stockIndex) && (stockIndex !=0) ) {
+            // if user already owns some qty of that stock then find it in holding arr and upadte the details 
             if( (stockIndex >=0)) {
 
                 state.holdingArr.find( (stock,index)=>{
@@ -58,6 +53,7 @@ export const holdingReducer = createSlice({
                 
                 console.log("this is when it has an index ")
             }else if(!(stockIndex)){
+                // if user is adding new stock to portfolio then add a entry to the holding Array
                 const data = {
                     stockSymbol:payload.stockSymbol,
                     "close":payload.close ,
@@ -69,19 +65,7 @@ export const holdingReducer = createSlice({
                 console.log("this is when it is undefined ")
                 
             }
-            // else {
 
-            //     state.holdingArr.find( (stock,index)=>{
-
-            //         if(stock.stockSymbol===payload.stockSymbol){
-            //             stock.price = ( ( (stock.price*stock.qty)+(payload.boughtQty*payload.buyPrice) ) / ((payload.boughtQty) + (+stock.qty)) )
-    
-            //             stock.qty = ((payload.boughtQty) + (+stock.qty) );
-            //             return stock
-            //         }
-    
-            //     })
-            // }
 
             // updating the quickdashboard details 
             state.investedAmount= 0 ;
@@ -90,9 +74,8 @@ export const holdingReducer = createSlice({
 
             state.holdingArr.map( function (resFinal,index){
 
-                var stockInvestedAmount = ( ( resFinal.close * (+resFinal.qty) ))
-                state.investedAmount = state.investedAmount +  stockInvestedAmount;
-                state.investedAmount = Math.round( ( state.investedAmount +  stockInvestedAmount) * 100) / 100;
+                var stockInvestedAmount = ( ( resFinal.close * (+resFinal.qty) ) )
+                state.investedAmount = Math.round( ( state.investedAmount +  stockInvestedAmount ) * 100) / 100;
 
                 // calcutating totalPnl 
                 var stockPnl = ( (resFinal.close - resFinal.price)*(+resFinal.qty) )
@@ -104,14 +87,16 @@ export const holdingReducer = createSlice({
 
                 return null;
             })
+
         },
         calculateTotal:(state,action)=>{
+            console.log('calculateTOtal has been triggered',action.payload)
+
             var resFinal = action.payload;
             // console.log("this is invested ant outside",state.investedAmount,action.payload)
             // calculating the ttlinvested amount 
             
             var stockInvestedAmount = ( ( resFinal.close * (+resFinal.qty) ))
-            state.investedAmount = state.investedAmount +  stockInvestedAmount;
             state.investedAmount = Math.round( ( state.investedAmount +  stockInvestedAmount) * 100) / 100;
 
             // calcutating totalPnl 

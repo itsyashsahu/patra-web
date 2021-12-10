@@ -177,7 +177,7 @@ router.post('/trans',requireLogin, async function(req, res, next) {
                     const reportEntryResult = await User.updateOne(
                         {"_id": id },
                         {
-                            $addToSet : { "reports" : {
+                            $push : { "reports" : {
                             stockName,
                             "qty":quantity,
                             "buyPrice":stockData.price,

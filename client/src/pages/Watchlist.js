@@ -52,9 +52,9 @@ export default function Watchlist() {
     const [mobile, setMobile] = useState(history.location.pathname);
     useEffect(() => {
         // console.log("asdlkjfhasdjkj",window.location.pathname)
+        console.log("welcome to watchlist ")  
         if(window.location.pathname === '/watchlist'){
             setMobile("watchlistMobile")
-            // console.log("welcome to watchlist ",mobile)  
         }else{
             setMobile('')
         }

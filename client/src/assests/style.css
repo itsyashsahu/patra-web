@@ -670,6 +670,10 @@ section{
     /* userInfo reposive  */
     .userInfo-split{
         flex-direction:column !important;
+        padding: 1.2rem 0;
+    }
+    .userInfoImg{
+        padding: 6rem 4rem !important;
     }
 }
 
@@ -896,6 +900,14 @@ section{
 .userInfoImg{
     display:flex;
     flex-direction:column;
+    overflow:hidden;
+}
+.userInfo-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .userInfoImg{
     padding:4rem;
@@ -938,12 +950,17 @@ section{
     display:flex;
     flex-direction:row;
     height:100%;
+    align-items: center;
+    border-top: 0.06rem solid var(--border-color);
+
 }
 .userInfo-split >*{
     width:100%;
-    padding:2rem 3rem;
-    border-top: 0.06rem solid var(--border-color);
+    padding:0rem 3rem;
     border-right: 0.06rem solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .userInfo-split-editUser >*{
     width:100%;
@@ -952,7 +969,7 @@ section{
     border-right: 0.06rem solid var(--border-color);
 }
 .userInfo-split-editUser div div,
-.userInfo-split div div{
+.userInfo-split > div > div{
     padding:0.765rem 0 ;
 }
 .userInfo-split-editUser div div a,
@@ -1240,6 +1257,9 @@ section{
     }
     .signup-section{
         height:100%;
+    }
+    .userInfo-split-editUser{
+        flex-direction:column;
     }
 }
 

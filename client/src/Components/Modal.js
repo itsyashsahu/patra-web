@@ -121,7 +121,6 @@ export default function Modal() {
             qty,
             "transPrice":currPrice
         }
-        dispatch(setTransHistory(updateTransHistoryData))
 
         
         // since price is not set by user we are not checking it 
@@ -140,12 +139,14 @@ export default function Modal() {
             dispatch( updateHolding(updateData));
             
             // await axios.post('http://localhost:4000/holding/trans', finalInput)
-            await axios.post('api/holding/trans', finalInput)
+            await axios.post('/api/holding/trans', finalInput)
             .then((res)=>{
                 // console.log(res)
                 if(res.status === 200){
                     console.log("Your Order has been Executed ")
                     setisOrderExecuted('buy');
+                    dispatch(setTransHistory(updateTransHistoryData))
+
                     dispatch(updateUser(-(+qty)*currPrice))
                     const turnModalOff = () =>{
                         setisOrderExecuted(false);
@@ -185,8 +186,8 @@ export default function Modal() {
                 sellPrice:currPrice
             }
             dispatch( updateSoldStock(updateData));
-
-            if(qty === stock.qty ){
+            console.log("the qty and stock.qty is ",(+qty),stock.qty)
+            if((+qty) === stock.qty ){
                 const updateReportData = {
                     stockName,
                     "buyPrice":stock.price,
