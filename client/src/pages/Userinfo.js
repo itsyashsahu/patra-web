@@ -35,7 +35,7 @@ export default function Userinfo() {
         phone:null,
         gender:null,
     });
-    const { name, proffession ,dob , phone,gender } = inputs;
+    const { name, proffession ,dob , phone } = inputs;
 
     var userName;
     if(user.name){

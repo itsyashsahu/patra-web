@@ -1,6 +1,6 @@
 import React from 'react'
 import NavbarMobile from './NavbarMobile'
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import QuickDashboard from './QuickDashboard';
 
 export default function Reports() {

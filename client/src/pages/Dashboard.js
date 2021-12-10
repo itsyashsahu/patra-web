@@ -1,9 +1,9 @@
 import React from 'react';
 import NavbarMobile from './NavbarMobile';
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 export default function Dashboard() {
-    const { totalPnl , investedAmount , currentValue } = useSelector((state)=> state.holding)
+    const { totalPnl , investedAmount } = useSelector((state)=> state.holding)
     const user = useSelector( (state)=> state.user.user );
     const originalReports = useSelector( (state)=> state.report.reportArr )
     // reversing the reports array and creating a copy as i want to display it in reverse order 
@@ -17,8 +17,6 @@ export default function Dashboard() {
         }
         userName = capitalizeFirstLetter(user.name);
     }
-    // console.log("username",userName);
-
     return (
             <div className="dashboard">
                 <div className="dashboard-text salsa name">
@@ -54,13 +52,11 @@ export default function Dashboard() {
 
                 <div className="recent-reports-section">
 
-                {/* <!-- <div className="recent-reports-area"> --> */}
                     {
                         (reports[0])?
                         reports.map( function (sname,index){
                             
-                            if(index==9){
-                                console.log(index)
+                            if(index===9){
                                 return(<></>)
                             }else{
 
@@ -79,25 +75,9 @@ export default function Dashboard() {
                             }
                         }):""
                     }
-
-                   
-                    {/* <div className="recent-reports">
-                        <div className="stockname">Stock 1</div>
-                        <div><p className="table-extra-text">Buy : &nbsp;</p> $123</div>
-                        <div><p className="table-extra-text">Sell : &nbsp;</p> $143</div>
-                        <div><p className="table-extra-text">Qty. &nbsp;</p>100</div>
-                        <div >+$2000</div>
-                        <div>+34%</div>
-                    </div> */}
-                    
-                    
-                    {/* <!-- till here  --> */}
-                {/* <!-- </div> --> */}
                 </div>
 
                 <NavbarMobile/>
-
-                {/* <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit maiores tempore ex, natus quos magnam animi harum libero ut voluptate velit blanditiis ratione aliquid deserunt molestias incidunt porro necessitatibus aperiam dolor tenetur? --> */}
             </div>
     )
 }

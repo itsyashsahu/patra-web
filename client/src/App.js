@@ -6,13 +6,11 @@ import PrivateRoute from './Components/PrivateRoute';
 import Signup from './pages/Signup';
 import Signin from './pages/Signin'
 import Modal from './Components/Modal'
-import { setShowOptions } from './redux/watchlistReducer';
-import {useSelector,useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import Intro from './pages/Intro';
 import AboutUs from './pages/AboutUs';
 
 function App() {
-  const dispatch = useDispatch();
   const showOptions = useSelector( (state)=> state.watchlist.showOptions )
 
   return (

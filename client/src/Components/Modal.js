@@ -12,30 +12,23 @@ import axios from 'axios'
 
 
 export const getPriceData = async (symbol) => {
-    // if(keyword.length>1){
-        // var symbol = "IBM";
+
         let url1 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ZTR22AB0MG26X48D`;
         let results = await fetch(url1);
         results = await results.json();
-        // console.log(results)
         var prices;
         if(results.Note){
             console.log("we exceded the limit");
-            // return(results.Note)
         }else{
 
-            // console.log(results["Meta Data"]["2. Symbol"]);
             const obj = results["Time Series (Daily)"];
             //accessing the first property or element of our object data
-            // console.log("this is the obj",obj[Object.keys(obj)[0]]);
             const dayData = obj[Object.keys(obj)[0]];
 
-            // const closePrice = dayData["4. close"];
             const closePrice = Math.round( ( dayData["4. close"]) * 100) / 100;
 
             const openPrice = dayData["1. open"];
             const change = Math.round( (closePrice-openPrice) * 100) / 100 ;
-            // const change = closePrice-openPrice
             const stockSymbol = results["Meta Data"]["2. Symbol"];
             var stockEndedIn;
             if(change>0){
@@ -43,11 +36,7 @@ export const getPriceData = async (symbol) => {
             }else{
                 stockEndedIn = 'red'
             }
-            // data = results.bestMatches; 
-            // setData(rawdata);
-            // }
             prices= { "stockSymbol":stockSymbol, "close": closePrice, "change": change,stockEndedIn}
-            // console.log('get price data response',prices);
         }
         return prices
 }
@@ -95,6 +84,7 @@ export default function Modal() {
             // console.log(stockSymbol)
             return stock
         }
+        return null;
     })
     
 
@@ -105,7 +95,7 @@ export default function Modal() {
         qty:null,
         // price:null
     });
-    const {  qty,price } = inputs;
+    const {  qty } = inputs;
 
     function handleChange(e) {
         setIsFieldsSet(false);
@@ -120,15 +110,9 @@ export default function Modal() {
 
     }
 
-    const userId = useSelector( (state) =>{
-        return state.user.user.userId;
-    })
-    const uid = { "userId": userId };
-
-
     async function handleSubmit(e) {
         e.preventDefault();
-        const { ordertypeMisCnc,ordertypeLimitMarket, qty,price } = inputs;
+        const {qty} = inputs;
 
         var transType = (option === 'buy')?"Bought":"Sold";
         const updateTransHistoryData ={
@@ -202,7 +186,7 @@ export default function Modal() {
             }
             dispatch( updateSoldStock(updateData));
 
-            if(qty == stock.qty ){
+            if(qty === stock.qty ){
                 const updateReportData = {
                     stockName,
                     "buyPrice":stock.price,

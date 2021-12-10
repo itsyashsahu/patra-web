@@ -19,7 +19,7 @@ export default function AboutUs() {
                 <div class="about-section-wrapper">
                     <div class="about-section-img">
                         <div className="about-section-img-box">
-                            <img  src={img} />
+                            <img alt="yash's profile" src={img} />
                             <div className="about-section-social-icons">
                                 <span>
                                     <ExternalLink href="https://www.linkedin.com/in/its-yash-sahu">

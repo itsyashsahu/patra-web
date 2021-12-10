@@ -222,7 +222,7 @@ body{
 }
 .ordertypeLimitMarket > span{
     width: 100%;
-    align-content: start;
+    align-content: flex-start;
     display: flex;
 }
 .orderTypeSection button{
@@ -434,7 +434,7 @@ section{
     justify-content: space-between;
     color:var(--red-color);
     display: flex;
-    align-items: end;
+    align-items: flex-end;
 }
 .watchlist-items-label{  
     color:var(--red-color);

@@ -2,7 +2,7 @@ import React,{useRef,useEffect,useState} from 'react'
 import '../assests/style-intro.css'
 import Navhome from '../Components/Navhome'
 import lottie from "lottie-web";
-import {Link,useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 export default function Intro() {

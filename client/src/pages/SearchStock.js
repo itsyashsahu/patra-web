@@ -5,7 +5,7 @@ import QuickDashboard from './QuickDashboard'
 import {useSelector} from 'react-redux';
 import axios from 'axios'
 import {useDispatch} from 'react-redux';
-import { setWatchlist,setUpdated,removeStockEntry} from '../redux/watchlistReducer';
+import { setWatchlist,removeStockEntry} from '../redux/watchlistReducer';
 import { getPriceData } from './Watchlist';
 // import {getPriceData} 
 
@@ -14,15 +14,13 @@ export default function SearchStock() {
     const dispatch = useDispatch();
     var addStockData;
     var watchlistdata = useSelector( (state) => state.watchlist.watchlistArr )
-    // var [ isStockFound,setIsStockFound] = useState(false);
     
     var isFound;
     var isStockFound = false;
     
     var stock = useSelector( (state) => state.watchlist.searchStock );
-    const [stockSearched,setStockSearched ] = useState("");
-    // console.log("This is the stockSearched :",stockSearched);
 
+    const [stockSearched,setStockSearched ] = useState("");
     const [ searchResults, setSearchResults ] = useState( [] );
     
     //searched results are stored in searchResults array hook
@@ -34,10 +32,8 @@ export default function SearchStock() {
                 let url1 = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${keyword}&apikey=ZTR22AB0MG26X48D`;
                 let results = await fetch(url1);
                 results = await results.json();
-                // console.log(results);
                 console.log("Now Searched gets Called");
-                // data = results.bestMatches;
-                let rawdata = new Array;
+                let rawdata = [];
                 if(results.bestMatches){
                     rawdata = results.bestMatches.filter( function(el) {
                         return el["4. region"] === "India/Bombay"; 
@@ -56,16 +52,10 @@ export default function SearchStock() {
     
     useEffect( () => {
 
-        // setStockSearched(stock);    
         setStockSearched(stock);    
-        // console.log("search keyword final thourg useEffect ::",stockSearched);
         console.log("search keyword final thourg useEffect ::",stock);
-        // setStockSearched(searched);
         search(stock);
-        // search(stockSearched);
-
         return () => console.log('unmounting...');
-
     }, [ stock , addStockData]);
 
     function handleChange(e) {
@@ -98,6 +88,7 @@ export default function SearchStock() {
             if(stock.stockName === stockName ){
                 isFound = true;
             }
+            return null;
         })
 
         if(!isFound){
@@ -177,12 +168,12 @@ export default function SearchStock() {
                         isStockFound= false;
                         watchlistdata.find( (stock,indexArr)=>{
                             // console.log(watchlistdata)
-                            if(stock.stockName == searchResults[index]["2. name"] ){
+                            if(stock.stockName === searchResults[index]["2. name"] ){
                                 // console.log(stock.stockName, "and ",searchResults[index]["2. name"])
                                 isStockFound = true;
-                                return;
-                            // }else{
+                                return null;
                             }
+                            return null;
                         })
 
                         // console.log("the stock ",searchResults[index]["2. name"],"and the result ",isStockFound)

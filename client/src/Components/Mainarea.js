@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import { Route,Switch, useHistory,useLocation} from 'react-router-dom'
+import React from 'react'
+import { Route,Switch} from 'react-router-dom'
 import WatchlistHeader from '../pages/WatchlistHeader'
 import Navbar from '../pages/Navbar'
 import Watchlist from '../pages/Watchlist'
@@ -12,19 +12,6 @@ import SearchStock from '../pages/SearchStock'
 // import Intro from '../pages/Intro'
 
 export default function Mainarea() {
-
-    let location = useLocation();
-    const [mobile, setMobile] = useState('')
-    // console.log("history",history.location.pathname)
-    // console.log("mobile",mobile)
-    // useEffect(() => {
-    //     console.log("asdlkjfhasdjkj",window.location.pathname)
-    //     if(window.location.pathname === '/watchlist'){
-    //         setMobile("watchlistMobile")
-    //         // console.log("welcome to watchlist ",mobile)  
-    //     }
-
-    // }, [location]);
 
     return (
         <>

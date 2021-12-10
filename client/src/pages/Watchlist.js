@@ -13,30 +13,19 @@ import setAuthToken from '../Components/setAuthToken';
 // this is the function that returns the prices of the stock provided to it
 // this also filters the stocks available in NSE or BSE
 export const getPriceData = async (symbol) => {
-    // if(keyword.length>1){
-        // var symbol = "IBM";
         let url1 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ZTR22AB0MG26X48D`;
         let results = await fetch(url1);
         results = await results.json();
-        // console.log(results)
         var prices;
         if(results.Note){
             console.log("we exceded the limit");
-            // return(results.Note)
         }else{
-
-            // console.log(results["Meta Data"]["2. Symbol"]);
             const obj = results["Time Series (Daily)"];
             //accessing the first property or element of our object data
-            // console.log("this is the obj",obj[Object.keys(obj)[0]]);
             const dayData = obj[Object.keys(obj)[0]];
-
-            // const closePrice = dayData["4. close"];
             const closePrice = Math.round( ( dayData["4. close"]) * 100) / 100;
-
             const openPrice = dayData["1. open"];
             const change = Math.round( (closePrice-openPrice) * 100) / 100 ;
-            // const change = closePrice-openPrice
             const stockSymbol = results["Meta Data"]["2. Symbol"];
             var stockEndedIn;
             if(change>0){
@@ -44,11 +33,7 @@ export const getPriceData = async (symbol) => {
             }else{
                 stockEndedIn = 'red'
             }
-            // data = results.bestMatches; 
-            // setData(rawdata);
-            // }
             prices= { "stockSymbol":stockSymbol, "close": closePrice, "change": change,stockEndedIn}
-            // console.log('get price data response',prices);
         }
         return prices
 }
@@ -60,7 +45,6 @@ export default function Watchlist() {
 
     const dispatch = useDispatch();
     const [input, setInput] = useState('')
-    const holdings = useSelector( (state)=> state.holding.holdingArr )
 
     // this mobile variable and useEffect is made to fix the watchlist in mobile view 
     // by dynamically applying the class watchlistMobile to watchlist div 
@@ -77,8 +61,6 @@ export default function Watchlist() {
 
     }, [location]);
 
-    // this showOptions hook is used to set and unset the model
-    const showOptions = useSelector( (state)=> state.watchlist.showOptions )
     // this stockData hook contains the data of the stock clicked 
     const stockData = useSelector( (state)=> state.watchlist.showOptionsStock )
 
@@ -86,23 +68,13 @@ export default function Watchlist() {
     // buy option modal so that it is able to swtich dynamically between buy and sell modals 
 
     var option ;
-    // var [option,setOption ] = useState('') ;
     if(stockData){
         option = stockData.option;
-        // setOption( stockData.option );
     }
 
     // this contains the data of the watchlist held by user 
     var watchlistdata = useSelector( (state) => state.watchlist.watchlistArr )
 
-    // fetchling userId to make request to get watchlistData
-    const userId = useSelector( (state) =>{
-        return state.user.user.userId;
-    })
-
-    // formatting our json post request 
-    const uid = { "userId": userId };
-    
     const setHoldingsData = () =>{
         // getting holdings data
         var resFinal;
@@ -111,37 +83,21 @@ export default function Watchlist() {
         .then( (res)=>{
             // console.log(res)
             res.data.map(async function (sname,index){
-                // console.log('skjhaskfjh',res.data[index])
-                // console.log(res.data)
                 var holdingsdata = res.data[index];
                 await getPriceData( res.data[index].stockSymbol )
                 .then( (res)=>{
-                        // console.log("this is stock name of ifnall",stockName);
-                        // console.log("inside get price data",res)
                     resFinal = {  ...res , ...holdingsdata };
                     dispatch( setHolding(resFinal) ) ;
-                    // console.log("HelloWorld",holdings)
-                    // }                           
                     return res;
                 })
                 .then( () => {
-                    // console.log("dispatched calculateTotal in resFinal", ( resFinal.close * (+resFinal.qty) ) )
-                    var stockInvestedAmount = ( ( resFinal.close * (+resFinal.qty) ))
                     dispatch(calculateTotal(resFinal));
-                    // console.log("dispatched calculateTotal in ")
                 })
                 .catch((err)=>console.log(err) );             
             })
             .then( () => {
-                // dispatch(calculateTotal());
-                // console.log("dispatched calculateTotal hello in ")
             })
-            // dispatch(calculateTotal());
         })
-        // .then( () => {
-        //     dispatch(calculateTotal());
-        //     console.log("dispatched calculateTotal in ")
-        // })
         .catch( (err) => console.log(err));
 
     }
@@ -149,11 +105,8 @@ export default function Watchlist() {
         // axios.post('http://localhost:4000/transHistory/', uid)
         axios.get('http://localhost:4000/transHistory/')
         .then( (res)=>{
-            // console.log(res)
             res.data.map(async function (sname,index){
-                // console.log(sname)
-                dispatch(setTransHistory(sname))
-                           
+                dispatch(setTransHistory(sname))                           
             })
         })
         .catch( (err) => console.log(err));
@@ -162,11 +115,8 @@ export default function Watchlist() {
         // axios.post('http://localhost:4000/report/', uid)
         axios.get('http://localhost:4000/report/')
         .then( (res)=>{
-            // console.log(res)
             res.data.map(async function (sname,index){
-                // console.log(sname)
                 dispatch(setReport(sname))
-                           
             })
         })
         .catch( (err) => console.log(err));
@@ -193,43 +143,17 @@ export default function Watchlist() {
         .then( (res) => {
 
             res.data.map(async function (sname,index){
-                    // console.log("this is sent to fetch data api ",res.data[index] );
-
                     //getting the price data of those stocks which we get in the watchlist of the user 
-                    // console.log("aksdhjfa",res.data[index].stockSymbol)
                 var stockName = res.data[index].stockName;
-                    // console.log("this is stock name of ifnall",res.data[index].stockName);
 
                 await getPriceData( res.data[index].stockSymbol )
                 .then( (res)=>{
-                        // console.log("this is stock name of ifnall",stockName);
-                        // console.log("inside get price data",res)
                     var resFinal = { "stockName":stockName , ...res };
-                    // res = { "stockName":res.data[index].stockName , ...res };
-
-                    // console.log("inside finally ",resFinal)
-                    // console.log("Before",ourPriceArr);
-                    // ourPriceArr = {...ourPriceArr, ...resFinal}
-                    // console.log("After::",ourPriceArr);
-                    // console.log("hellow",res)
-                    // dispatch( setWatchlist( "NULL" ) ) 
-            
                     dispatch( setWatchlist(resFinal) ) ;
-                    // count++;
-                    // console.log("objlentght and count",objlength,count)
-                    // if(objlength  == count ){ 
-
-                        // dispatch( setWatchlist(ourPriceArr) ) ;
-                        // console.log("objlentght and count finally",objlength,count)
-                        // console.log('dada inside our if condition',ourPriceArr )
-                    // }                           
                     return res;
                 })
                 .catch((err)=>console.log(err) );
-                // console.log("this is dd pricedata",ourprices);
             })
-            // sessionStorage.setItem( "watchlistItem",res.data)
-
         })
         .catch( (err) => console.log(err));
         
@@ -239,8 +163,7 @@ export default function Watchlist() {
         setReportData();
         setUserData();
     },[])
-
-    
+        
     function handleChange(e) {
         const search = e.target.value;
         setInput(search);
@@ -248,7 +171,6 @@ export default function Watchlist() {
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(setSearchStock(input));
-        // setInput("");
         history.push("./searchstock")
     }
 
@@ -260,11 +182,7 @@ export default function Watchlist() {
             axios.post('http://localhost:4000/watchlist/remove',removeStockData)
             .then( (res)=>{
                 console.log("the stock got removed",res);
-                // watchlistdata.pull
-                // console.log(watchlistdata , stockSymbol)
                 dispatch(removeStockEntry(stockSymbol));
-                // watchlistdata.splice( watchlistdata.findIndex(item => item.stockSymbol === stockSymbol), 1);
-                // console.log(watchlistdata)
             })
             .catch((err)=>console.log(err))
         }catch(err){
@@ -295,7 +213,6 @@ export default function Watchlist() {
 
             { (watchlistdata[0])?
                 watchlistdata.map( function (sname,index){
-                    // console.log( 'this is watchlist data',watchlistdata[index])
                     return(
                         <>
                             <div className="watchlist-item">
@@ -364,8 +281,6 @@ export default function Watchlist() {
                 
             }
 
-            {/* <!-- till here  --> */}
-            
             </div>
             <div>
             <div className="watchlist-item-caution numberFont">

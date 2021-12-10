@@ -31,8 +31,8 @@ export const holdingReducer = createSlice({
                     stockIndex = index
                     // console.log("mila gaya index ", stockIndex)
                     return stock
-                }else{
                 }
+                return null;
             })
             
             
@@ -52,6 +52,7 @@ export const holdingReducer = createSlice({
                         stock.qty = ((payload.boughtQty) + (+stock.qty) );
                         return stock
                     }
+                    return null;
     
                 })
                 
@@ -101,7 +102,7 @@ export const holdingReducer = createSlice({
                 var stockCurrValue = ( resFinal.close*(+resFinal.qty) )
                 state.currentValue = Math.round( ( state.currentValue + stockCurrValue) * 100) / 100;
 
-                // return sname;
+                return null;
             })
         },
         calculateTotal:(state,action)=>{
@@ -138,6 +139,7 @@ export const holdingReducer = createSlice({
                     stockIndex = index
                     return stock
                 }
+                return null;
             })
 
             //firstly substracting the stockPnl 
@@ -147,7 +149,7 @@ export const holdingReducer = createSlice({
 
             state.currentValue = state.currentValue - ((+payload.soldQuantity)*state.holdingArr[stockIndex]["close"] )
             // if all the stocks are sold remove the entry in the array 
-            if( payload.soldQuantity == state.holdingArr[stockIndex]["qty"]  )
+            if( payload.soldQuantity === state.holdingArr[stockIndex]["qty"]  )
             {
                 // console.log("quanitta")
                 state.holdingArr.splice(state.holdingArr.findIndex(a => a.stockSymbol === payload.stockSymbol) , 1)
