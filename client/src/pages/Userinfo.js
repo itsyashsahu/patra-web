@@ -67,7 +67,7 @@ export default function Userinfo() {
         console.log(inputs)
         
         // axios.post('http://localhost:4000/users/updateinfo', finalInput)
-        axios.post('http://localhost:4000/users/updateinfo', inputs )
+        axios.post('api/users/updateinfo', inputs )
         .then( (res) =>{
             console.log(res);
             if(res.status===200){

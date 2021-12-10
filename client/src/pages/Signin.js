@@ -55,7 +55,7 @@ export default function Signup() {
             // const { from } = location.state || { from: { pathname: "/" } };
         //     dispatch(userActions.login(username, password, from));
 
-        axios.post('http://localhost:4000/users/signin', inputs)
+        axios.post('api/users/signin', inputs)
         .then( (res) =>{
             // console.log(res);
 
@@ -110,9 +110,6 @@ export default function Signup() {
             
             <div className="signin-img">
                 <div className="signup-lottie" ref={container}>
-                    {/* <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_q5pk6p1k.json"  background="transparent"  speed="1"  style="width: auto; height: auto;"  loop  autoplay></lottie-player> */}
                 </div>
                 <div>
                     Not a Member ? &nbsp; <Link to="/signup">Signup here</Link> 

@@ -52,7 +52,7 @@ export default function Signup() {
     function handleSubmit(e) {
         e.preventDefault();
         if(isPasswordMatching){
-            axios.post('http://localhost:4000/users', inputs)
+            axios.post('api/users', inputs)
             .then( (res) =>{
                 // console.log(res);
                 if(res.status===200){

@@ -94,7 +94,7 @@ export default function SearchStock() {
         if(!isFound){
 
             try{
-                axios.post('http://localhost:4000/watchlist/add', addStockData)
+                axios.post('api/watchlist/add', addStockData)
                 .then(async (res)=>{
                     if(res.status === 200){
     
@@ -126,7 +126,7 @@ export default function SearchStock() {
                 stockSymbol,
             }
             console.log("this is removeSotkc ",removeStockData)
-            axios.post('http://localhost:4000/watchlist/remove',removeStockData)
+            axios.post('api/watchlist/remove',removeStockData)
             .then( (res)=>{
                 console.log("the stock got removed",res);
                 // watchlistdata.pull

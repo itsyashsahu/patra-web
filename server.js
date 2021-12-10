@@ -14,11 +14,11 @@ app.use(cors());
 require('./db/connfig');
 
 // app.use( "/"  , require( './routes/index') )
-app.use( "/users"   , require( './routes/users') )
-// app.use( "/report"   , require( './routes/report') )
-// app.use( "/holding"   , require( './routes/holding') )
-// app.use( "/watchlist"   , require( './routes/watchlist') )
-// app.use( "/transhistory"   , require( './routes/transHistory') )
+app.use( "api/users"   , require( './routes/users') )
+app.use( "api/report"   , require( './routes/report') )
+app.use( "api/holding"   , require( './routes/holding') )
+app.use( "api/watchlist"   , require( './routes/watchlist') )
+app.use( "api/transhistory"   , require( './routes/transHistory') )
 
 
 if(process.env.NODE_ENV=="production"){

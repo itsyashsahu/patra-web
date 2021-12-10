@@ -79,7 +79,7 @@ export default function Watchlist() {
         // getting holdings data
         var resFinal;
         // axios.post('http://localhost:4000/holding/', uid)
-        axios.get('http://localhost:4000/holding/')
+        axios.get('api/holding/')
         .then( (res)=>{
             // console.log(res)
             res.data.map(async function (sname,index){
@@ -103,7 +103,7 @@ export default function Watchlist() {
     }
     const setTransHistoryData =() =>{
         // axios.post('http://localhost:4000/transHistory/', uid)
-        axios.get('http://localhost:4000/transHistory/')
+        axios.get('api/transHistory/')
         .then( (res)=>{
             res.data.map(async function (sname,index){
                 dispatch(setTransHistory(sname))                           
@@ -113,7 +113,7 @@ export default function Watchlist() {
     }
     const setReportData =() =>{
         // axios.post('http://localhost:4000/report/', uid)
-        axios.get('http://localhost:4000/report/')
+        axios.get('api/report/')
         .then( (res)=>{
             res.data.map(async function (sname,index){
                 dispatch(setReport(sname))
@@ -123,7 +123,7 @@ export default function Watchlist() {
     }
     const setUserData =() =>{
         // axios.post('http://localhost:4000/users/getinfo', uid)
-        axios.get('http://localhost:4000/users/getinfo')
+        axios.get('api/users/getinfo')
         .then( (res)=>{
             console.log(res);
             dispatch(setUser(res.data))
@@ -139,7 +139,7 @@ export default function Watchlist() {
         setAuthToken(token); 
 
         // getting users watchlist stocks 
-        axios.get('http://localhost:4000/watchlist')
+        axios.get('api/watchlist')
         .then( (res) => {
 
             res.data.map(async function (sname,index){
@@ -163,7 +163,7 @@ export default function Watchlist() {
         setReportData();
         setUserData();
     },[])
-        
+
     function handleChange(e) {
         const search = e.target.value;
         setInput(search);
@@ -179,7 +179,7 @@ export default function Watchlist() {
             const removeStockData = {
                 stockSymbol,
             }
-            axios.post('http://localhost:4000/watchlist/remove',removeStockData)
+            axios.post('api/watchlist/remove',removeStockData)
             .then( (res)=>{
                 console.log("the stock got removed",res);
                 dispatch(removeStockEntry(stockSymbol));

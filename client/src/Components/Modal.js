@@ -140,7 +140,7 @@ export default function Modal() {
             dispatch( updateHolding(updateData));
             
             // await axios.post('http://localhost:4000/holding/trans', finalInput)
-            await axios.post('http://localhost:4000/holding/trans', finalInput)
+            await axios.post('api/holding/trans', finalInput)
             .then((res)=>{
                 // console.log(res)
                 if(res.status === 200){
@@ -162,7 +162,7 @@ export default function Modal() {
         }else if ( ( option ==='sell' && qty <= ( (stock)?stock.qty:0 ) && qty ) ){
             const finalInput = {...inputs,price: currPrice, option,stockSymbol,stockName}
             console.log("sold final inputs ",finalInput)
-            axios.post('http://localhost:4000/holding/trans', finalInput)
+            axios.post('api/holding/trans', finalInput)
             .then((res)=>{
                 console.log(res)
                 setisOrderExecuted('sell');
@@ -202,7 +202,7 @@ export default function Modal() {
             
             // when all the fields are not set 
             setIsFieldsSet(true)
-            console.log("baand baj gyi ")
+            // console.log("baand baj gyi ")
         }
 
     }
@@ -352,145 +352,4 @@ export default function Modal() {
             </Draggable>
         )
     }
-
-    
-    // return (
-    //     <Draggable
-    //     // defaultPosition={{x: 300, y: 300}}
-    //     // positionOffset={ { x: '100%' ,y: '50%' } }
-    //     >
-
-    //     <div className="drag-wrapper">
-    //         {
-    //             (isOrderExecuted)?
-    //                     <div className="lottie-modal-buy" ref={container} >
-    //                     </div>:
-
-    //             <form method="POST" onSubmit={handleSubmit} >
-
-    //                 <div className={`orderType-header ${option}`} > 
-    //                     <span>{stockName} <span>Qty : {qty} </span></span>
-    //                     <span onClick={()=>{dispatch( setShowOptions() )}}>
-    //                         <i className="ri-close-circle-line"></i>
-    //                     </span>
-    //                 </div>
-    //                 <div className="orderType-selection">
-    //                     <span>
-    //                             {/* NOTE I have Disaabled the limit order option */}
-    //                         <input type="radio" name="ordertypeMisCnc" 
-    //                             value="mis" onChange={handleChange} disabled/>Intraday MIS</span>  
-    //                     <span><input type="radio" name="ordertypeMisCnc" 
-    //                             value="cnc" onChange={handleChange} checked/>Longterm CNC</span>  
-    //                 </div>
-    //                 <div className="orderType">
-    //                     <div className="orderTypeSection">
-                            
-    //                         <span> 
-    //                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7 5V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h4zm8 2H9v12h6V7zM7 7H4v12h3V7zm10 0v12h3V7h-3zM9 3v2h6V3H9z"/></svg>
-    //                             <input className="numberFont" type="Number" placeholder="Qty" name='qty' 
-    //                                 onChange={handleChange}/> 
-    //                         </span> 
-
-    //                         {
-    //                             (stockData.option==="buy")?
-    //                             <>
-    //                             <span>Margin Required : <p className='numberFont'>{Math.round( (qty*currPrice) * 100) / 100}</p> </span>
-    //                             <span>funds Available : funds </span>
-    //                             <span>Balance After transaction:funds-margin </span>
-    //                             </>
-    //                             :null 
-    //                         }
-    //                         {
-    //                             (stockData.option==="sell")?
-    //                             <>
-    //                             <span>Stocks Hold : <p className='numberFont'>{(stock)?stock.qty:'0 You Cannot Execute This Transaction'}</p> </span> 
-    //                             <span>Ttl. Sell Value : <p className='numberFont'>{Math.round( (qty*currPrice) * 100) / 100}</p> </span>
-    //                             <span>Balance After transaction:funds+Ttl Sold Value </span>
-                                
-    //                             </>
-    //                             :null 
-    //                         }
-
-    //                     </div>
-    //                     <div className="orderTypeSection ">
-    //                         <span>
-    //                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    //                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 8h6m-5 0a3 3 0 110 6H9l3 3m-3-6h6m6 1a9 9 0 11-18 0 9 9 0 0118 0z" />
-    //                             </svg>
-    //                             {/* NOTE I have Disaabled the price option */}
-    //                             <input className="numberFont" type="Number" placeholder={`Price : ${currPrice}`} name="price"
-    //                                 onChange={handleChange} disabled /></span>  
-    //                         <span className="ordertypeLimitMarket">
-
-    //                             <span><input type="radio" name="ordertypeLimitMarket"
-    //                                     value='market' onChange={handleChange} checked />Market</span>
-    //                                     {/* NOTE I have Disaabled the limit order option */}
-    //                             <span><input type="radio" name="ordertypeLimitMarket" 
-    //                                     value='limit' onChange={handleChange} disabled/>Limit</span>
-    //                         </span>    
-    //                         <button className={option}>{option.toUpperCase()}</button>
-    //                         <span className='orderType-extras'>
-    //                             {
-    //                                 (!isFieldsSet) &&  
-    //                                 <>
-    //                                 <span >
-    //                                     <input type="checkbox" name="setYourTarget" 
-    //                                             value={valueCheckbox?false:true}  onChange={handleChange} disabled/>      
-    //                                     {/* <span>Set Your Target</span>  */}
-    //                                 </span>
-    //                                 <span>Set Your Target</span> 
-    //                                 </>
-    //                             }
-    //                             {
-    //                                 isFieldsSet && 
-    //                                 <span className= "orderType-fill-all-fields" >
-    //                                     <i className="ri-error-warning-line"></i>Please fill all Fields Correctly
-    //                                 </span>
-    //                             }
-                                
-    //                         </span>
-    //                     </div>
-    //                 </div>
-    //                 {
-    //                     // this code never gets executed because i have disabled the setYour Target Option 
-    //                     valueCheckbox?
-    //                     <div className="setTargetOptions">
-    //                         <div className="setTargetOptions-section">
-    //                             <span>
-    //                                 <span>1st</span>
-    //                                 <input type="Number" placeholder="Qty" />
-    //                             </span>
-    //                             <span>
-    //                                 <span>2nd</span>
-    //                                 <input type="Number" placeholder="Qty" />
-    //                             </span>
-    //                             <span>
-    //                                 <span>3rd</span>
-    //                                 <input type="Number" placeholder="Qty" />
-    //                             </span>
-    //                         </div>
-    //                         <div className="setTargetOptions-section">
-    //                             <input type="Number" placeholder="Price" />
-    //                             <input type="Number" placeholder="Price" />
-    //                             <input type="Number" placeholder="Price" />
-    //                         </div>
-    //                     </div>:null
-    //                 }
-                
-    //             </form>
-
-    //         }
-
-    //     </div>
-    //     </Draggable>
-    // )
 }
-
-
-
-
-// credits < 30 ? 
-//     "freshman" : 
-//     credits <= 59 ? "sophomore" : 
-//     credits <= 89 ? "junior" : 
-//     "senior"

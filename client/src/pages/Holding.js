@@ -85,23 +85,7 @@ export default function Holding() {
                             )
                         }):""
                     }
-                    {/* <div className="holdings">
-                        <div className="stockname">Stock 1</div>
-                        <div><p className="table-extra-text">Qty. &nbsp;</p> 100</div>
-                        <div><p className="table-extra-text">Buy : &nbsp;</p>$123</div>
-                        <div><p className="table-extra-text">Curr. Val. : &nbsp;</p> $143</div>
-                        <div><p className="table-extra-text">LTP : &nbsp;</p>$143</div>
-                        <div >$2000</div>
-                        <div>34%</div>
-                    </div> */}
                     
-                    
-                    {/* <!-- till here --> */}
-                    {
-                        // const callback = ()
-                    }
-                    
-                    {/* <!-- Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit maiores tempore ex, natus quos magnam animi harum libero ut voluptate velit blanditiis ratione aliquid deserunt molestias incidunt porro necessitatibus aperiam dolor tenetur? --> */}
                 </div>
                 <div className="holdings-totaldaypnl">
                     <div className="holdings-totaldaypnl-label">Today's P&L</div>
