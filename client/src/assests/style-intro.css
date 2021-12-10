@@ -1,0 +1,112 @@
+.intro-section-wrapper{
+    display: flex;
+    /* grid-template-columns: 1fr 1fr; */
+    width: 100vw;
+    /* overflow:hidden; */
+    height:83vh;
+}
+.intro-frontBanner-description{
+    /* padding:10rem 0 2rem 8rem; */
+    width: 100%;
+    display: flex;
+    margin: auto auto;
+    padding:0 auto;
+    display:flex;
+    justify-content:center;
+}
+.intro-tagline >span {
+    font-size: 3.5rem;
+}
+.intro-tagline > p {
+    margin-top: 0.5rem;
+    line-height: 1.7rem;
+    font-size: 1.1rem;
+
+}
+.intro-frontBanner-img{
+    /* padding: 4rem 2rem 3rem 4rem;   */
+    width: 100%;
+    display: flex; 
+    margin: auto auto;
+    padding:0 auto;
+    display:flex;
+    justify-content:center; 
+}
+
+.intro-front-lottie{
+    /* margin: auto 7rem auto 8rem; */
+    height: 25rem;
+    width: 25rem;
+}
+.button-box{
+    padding: 1.2rem 0rem;
+    display: flex;
+    width: 100%;
+}
+.button-box button {
+    padding: 0.6rem 0 !important;
+    background: #6dabe4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-right: auto;
+    width: 65%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+}
+.button-box p {
+    color: #fff;
+}
+.button-box a {
+    /* color: #fff; */
+    /* width: 100%; */
+    text-decoration: none;
+}
+.button-box span>p {
+    margin-left: 2rem;
+}
+.button-box span {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.signupText-arrow{
+    height: 1.3rem;
+    width: 1.8rem;
+    transform: rotate(180deg);
+}
+/* 
+@media screen and (max-width: 60rem) {
+    .intro-frontBanner-description {
+        padding: 10rem 0 2rem 4rem;
+    }
+    .intro-frontBanner-img {
+        padding: 4rem 2rem 3rem 2rem;
+    }
+}
+@media screen and (max-width: 55rem) {
+    .intro-frontBanner-description {
+        padding: 10rem 0 2rem 1rem;
+    }
+}*/
+@media screen and (max-width: 48rem) {
+    .intro-section-wrapper{
+        /* display: none; */
+        flex-direction: column;
+        
+    }
+    .intro-frontBanner-description{
+        justify-content: flex-start;
+        padding-left: 4rem;
+    }
+    .intro-frontBanner-description{
+        height:100vh;
+        margin:8rem 0;
+    }
+} 

@@ -1,0 +1,48 @@
+
+{
+    "_id": {
+        "$oid": "619cb8aef9eee4207693423c"
+    },
+  "clientId":"JUB345",
+  "name":"Yash Sahu",
+  "proffession":"Engineer",
+  "gender":"M",
+  "dob":"23/04/2001",
+  "phone":8475637839,
+  "email":"yashsahuhoon@gmail.com",
+  "password":"asdf",
+  "fundsProvided":"1000000",
+  "fundsAvailable":"10000",
+  "fundsUsed":"2000",
+  "holdings":[
+     {
+       "stockName":"tatalmt",
+        "stockSymbol":"tataglmt",     
+        "qty":"23",
+        "buyPrice":"423"      
+     },
+      {
+       "stockName":"tataglb",
+        "stockSymbol":"tataglb",     
+        "qty":"23",
+        "buyPrice":"324"   
+     } ],
+  "watchlist":[
+     { 
+       "stockName":"tataglb",
+        "stockSymbol":"tataglb"
+     },
+     { 
+       "stockName":"tataglb",
+        "stockSymbol":"tataglb"
+     }  ],
+  "transHistory":[
+      {
+        "transType":"BUY",      
+       "stockName":"tataglb",
+        "qty":"34",
+        "transPrice":"435",
+        "date":"12-23-2002",
+        "time":"02:34:45:23"        
+      }]
+}
