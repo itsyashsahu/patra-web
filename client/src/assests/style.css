@@ -37,7 +37,6 @@
 .wrong-credentials-signup{
     padding: 0.8rem 1rem;
     background:#F87171;
-    opacity:75%;
     color:#fff;
     display:flex;
     font-size:1rem;
@@ -260,8 +259,6 @@ body{
 .orderType-fill-all-fields{
     padding: 0.3rem 0.6rem;
     background:#F87171;
-    opacity:75%;
-    
     color:#fff;
     display:flex;
     font-size:0.8rem;
