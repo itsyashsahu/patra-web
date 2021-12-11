@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ScrollToBottom from 'react-scroll-to-bottom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -11,7 +12,9 @@ ReactDOM.render(
   <Provider store = { store } >
   <React.StrictMode>
     <BrowserRouter>
+    <ScrollToBottom>
       <App />
+    </ScrollToBottom>
     </BrowserRouter>
   </React.StrictMode>
   </Provider>,
