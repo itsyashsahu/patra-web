@@ -213,7 +213,7 @@ export default function Modal() {
     if(!isOrderExecuted){
         return(
             <>
-            <Draggable handle="strong" >
+            <Draggable handle="strong" cancel="strong2" >
             <div className="drag-wrapper">
             {
                 <form method="POST" onSubmit={handleSubmit} >
@@ -221,9 +221,11 @@ export default function Modal() {
                     <strong>
                     <div className={`orderType-header ${option}`} > 
                         <span>{stockName} <span>Qty : {qty} </span></span>
+                        <strong2>
                         <span onClick={()=>{dispatch( setShowOptions() )}}>
                             <i className="ri-close-circle-line"></i>
                         </span>
+                        </strong2>
                     </div>
                     </strong>
                     <div className="orderType-selection">
