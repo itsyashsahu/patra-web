@@ -89,10 +89,10 @@ export default function Modal() {
     
 
     const [inputs, setInputs] = useState({
-        ordertypeMisCnc: null,
-        ordertypeLimitMarket: null,
-        setYourTarget:null,
-        qty:null,
+        ordertypeMisCnc: '',
+        ordertypeLimitMarket: '',
+        setYourTarget:'',
+        qty:'',
         // price:null
     });
     const {  qty } = inputs;
@@ -212,17 +212,19 @@ export default function Modal() {
     if(!isOrderExecuted){
         return(
             <>
-            <Draggable>
+            <Draggable handle="strong" >
             <div className="drag-wrapper">
             {
                 <form method="POST" onSubmit={handleSubmit} >
 
+                    <strong>
                     <div className={`orderType-header ${option}`} > 
                         <span>{stockName} <span>Qty : {qty} </span></span>
                         <span onClick={()=>{dispatch( setShowOptions() )}}>
                             <i className="ri-close-circle-line"></i>
                         </span>
                     </div>
+                    </strong>
                     <div className="orderType-selection">
                         <span>
                                 {/* NOTE I have Disaabled the limit order option */}
