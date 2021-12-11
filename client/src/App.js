@@ -1,4 +1,4 @@
-import React ,{ useEffect,useRef} from 'react'
+import React from 'react'
 import { Route ,Switch} from 'react-router-dom';
 import './assests/style.css'
 import Mainarea from './Components/Mainarea';
@@ -12,16 +12,12 @@ import AboutUs from './pages/AboutUs';
 
 function App() {
   const showOptions = useSelector( (state)=> state.watchlist.showOptions )
-  const scrollDiv = useRef(null);
-  const scrollToBottom = () =>{
-    scrollDiv.current.scrollIntoView({ behavior: "smooth"});
-  }
-  useEffect(scrollToBottom,[])
+ 
   return (
     <>
     {showOptions&& <Modal/>}
     {/* <Modal/> */}
-    <div ref={scrollDiv} >
+    <div >
       
     <Switch>
       <Route exact path="/home" component={Intro} />
