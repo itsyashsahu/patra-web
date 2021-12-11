@@ -15,10 +15,13 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 export default function Mainarea() {
     const scrollDiv = useRef(null);
-    const scrollToBottom = () =>{
-        scrollDiv.current.scrollIntoView({ behavior: "smooth"});
-    }
-    useEffect(scrollToBottom,[])
+    // const scrollToBottom = () =>{
+    //     scrollDiv.current.scrollIntoView({ behavior: "smooth"});
+    // }
+    // useEffect(scrollToBottom,[])
+    useEffect(() =>{
+        scrollDiv.current.scrollIntoView();
+    },[])
 
     return (
         <>
