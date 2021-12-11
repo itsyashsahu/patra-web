@@ -171,6 +171,7 @@ export default function Modal() {
                     setisOrderExecuted(false);
                     dispatch( setShowOptions() )
                     dispatch(updateUser((+qty)*currPrice))
+                    dispatch(setTransHistory(updateTransHistoryData))
 
                 }
                 setTimeout(turnModalOff, 1000);
