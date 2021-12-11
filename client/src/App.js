@@ -11,8 +11,7 @@ import Intro from './pages/Intro';
 import AboutUs from './pages/AboutUs';
 
 function App() {
-  const showOptions = useSelector( (state)=> state.watchlist.showOptions )
- 
+
   return (
     <>
     {showOptions&& <Modal/>}

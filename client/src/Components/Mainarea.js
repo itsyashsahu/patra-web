@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{ useEffect,useRef} from 'react'
 import { Route,Switch} from 'react-router-dom'
 import WatchlistHeader from '../pages/WatchlistHeader'
 import Navbar from '../pages/Navbar'
@@ -12,10 +12,15 @@ import SearchStock from '../pages/SearchStock'
 // import Intro from '../pages/Intro'
 
 export default function Mainarea() {
+    const scrollDiv = useRef(null);
+    const scrollToBottom = () =>{
+        scrollDiv.current.scrollIntoView({ behavior: "smooth"});
+    }
+    useEffect(scrollToBottom,[])
 
     return (
         <>
-            <div className= "navbar">
+            <div className= "navbar" ref={scrollDiv} >
                 <WatchlistHeader/>
                 <Navbar/>
                 {/* <div> */}
