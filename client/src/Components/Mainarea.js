@@ -10,6 +10,8 @@ import Reports from '../pages/Reports'
 import Userinfo from '../pages/Userinfo'
 import SearchStock from '../pages/SearchStock'
 // import Intro from '../pages/Intro'
+import ScrollToBottom from 'react-scroll-to-bottom';
+
 
 export default function Mainarea() {
     const scrollDiv = useRef(null);
@@ -20,6 +22,7 @@ export default function Mainarea() {
 
     return (
         <>
+        <scrollToBottom>
             <div className= "navbar" ref={scrollDiv} >
                 <WatchlistHeader/>
                 <Navbar/>
@@ -43,6 +46,7 @@ export default function Mainarea() {
                         
                 </Switch>
             </div>
+        </scrollToBottom>
         </>
     )
 }
