@@ -9,11 +9,21 @@ import Modal from './Components/Modal'
 import {useSelector} from 'react-redux';
 import Intro from './pages/Intro';
 import AboutUs from './pages/AboutUs';
+// import screenfull from 'screenfull';
 
 function App() {
   const showOptions = useSelector( (state)=> state.watchlist.showOptions )
+  // const element = document.getElementById('target');
+
+  // document.getElementById('button').addEventListener('click', () => {
+  //   if (screenfull.isEnabled) {
+  //     screenfull.request(element, {navigationUI: 'hide'});
+  //   }
+  // });
+
   return (
     <>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     {showOptions&& <Modal/>}
     {/* <Modal/> */}
     <div >
