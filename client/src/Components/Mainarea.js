@@ -10,7 +10,7 @@ import Reports from '../pages/Reports'
 import Userinfo from '../pages/Userinfo'
 import SearchStock from '../pages/SearchStock'
 // import Intro from '../pages/Intro'
-import ScrollToBottom from 'react-scroll-to-bottom';
+// import ScrollToBottom from 'react-scroll-to-bottom';
 
 
 export default function Mainarea() {
