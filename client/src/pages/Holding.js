@@ -79,7 +79,7 @@ export default function Holding() {
                                         <div><p className="table-extra-text">Buy : &nbsp;</p>{holdings[index]["price"]}</div>
                                         <div><p className="table-extra-text">Curr. Val. : &nbsp;</p>₹&nbsp;{  Math.round( ( currStockValue) * 100) / 100  }</div>
                                         <div><p className="table-extra-text">LTP : &nbsp;</p>₹&nbsp;{holdings[index]["close"]}</div>
-                                        <div >₹&nbsp;{ Math.round( ( stockPnl ) * 100) / 100  }</div>
+                                        <div >₹ { Math.round( ( stockPnl ) * 100) / 100  }</div>
                                         <div>{  Math.round( ( stockPercentageChange) * 100) / 100   }%</div>
                                     </div>
                                 </>
