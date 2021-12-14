@@ -600,7 +600,7 @@ section{
     }
     .holdings{
         grid-template-rows: 1fr 1.7fr 1fr;
-        grid-template-columns: 0.8fr 0.8fr 2fr 0.5fr !important;
+        grid-template-columns: 0.8fr 0.8fr 2fr 0.9fr !important;
     }
     /* resturcturing the holgins table  */
     .holdings >:nth-child(2){ 
