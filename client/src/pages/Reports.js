@@ -58,8 +58,8 @@ export default function Reports() {
                                 <div><p className="table-extra-text">Buy : &nbsp; </p>₹ &nbsp;{reports[index]["buyPrice"]}</div>
                                 <div><p className="table-extra-text">Sell : &nbsp; </p>₹ &nbsp;{reports[index]["sellPrice"]}</div>
                                 <div><p className="table-extra-text">Qty. &nbsp;</p>{reports[index]["qty"]}</div>
-                                <div >₹ &nbsp; {((reports[index]["sellPrice"]-reports[index]["buyPrice"])*reports[index]["qty"] ) }</div>
-                                <div>{((reports[index]["sellPrice"]-reports[index]["buyPrice"])/reports[index]["buyPrice"])*100}%</div>
+                                <div >₹ &nbsp; { Math.round( ( ((reports[index]["sellPrice"]-reports[index]["buyPrice"])*reports[index]["qty"] ) ) * 100) / 100 }</div>
+                                <div>{ Math.round( ( ((reports[index]["sellPrice"]-reports[index]["buyPrice"])/reports[index]["buyPrice"])*100  ) * 100) / 100 }%</div>
                             </div>
                         </>
                     )
