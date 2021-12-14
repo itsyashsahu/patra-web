@@ -263,7 +263,7 @@ export default function Watchlist() {
                                     </svg>
                                     </Link> 
                                 </span>
-                                <span className={` ${watchlistdata[index]["stockEndedIn"]}`}>₹ &nbsp;{ watchlistdata[index]["close"]}</span>
+                                <span className={` ${watchlistdata[index]["stockEndedIn"]}`}>₹{ watchlistdata[index]["close"]}</span>
                                 <span className="watchlist-items-number">
                                     <span className={`watchlist-items-number-change ${watchlistdata[index]["stockEndedIn"]}`}>{ watchlistdata[index]["change"]}</span>
                                     <Link onClick={ () => removeStock(  watchlistdata[index]["stockSymbol"] ) } to="#"> 

@@ -446,7 +446,7 @@ section{
     border-bottom:0.06rem solid var(--border-color);
     box-shadow: var(--shadows);
     display: grid;
-    grid-template-columns: 3fr 1fr 1.3fr 0.3fr;
+    grid-template-columns: 3fr 1fr 1.9fr 0.3fr;
     font-family: sans-serif;
 }
 
