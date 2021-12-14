@@ -53,9 +53,9 @@ export default function SearchStock() {
     useEffect( () => {
 
         setStockSearched(stock);    
-        console.log("search keyword final thourg useEffect ::",stock);
+        // console.log("search keyword final thourg useEffect ::",stock);
         search(stock);
-        return () => console.log('unmounting...');
+        return () => null
     }, [ stock , addStockData]);
 
     function handleChange(e) {

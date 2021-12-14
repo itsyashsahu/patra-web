@@ -98,7 +98,7 @@ export default function Signup() {
                             <i className="ri-mail-fill"></i> 
                             <input type="text" name="email" 
                             value={email} onChange={handleChange} autoComplete="off"
-                            placeholder="Your E-mail" />
+                            placeholder="Your E-mail" required/>
                         </div>
                     </div>
                     <div className="form-credentials signup-form-input">
@@ -106,7 +106,7 @@ export default function Signup() {
                             <i className="ri-lock-2-fill"></i> 
                             <input type="password" name="password" autoComplete="off"
                             value={password} onChange={handleChange}
-                            placeholder="Password" />
+                            placeholder="Password" required/>
                         </div>
                     </div>
                     <div className="form-credentials signup-form-input">
@@ -114,7 +114,7 @@ export default function Signup() {
                             <i className="ri-lock-2-line"></i> 
                             <input type="password" name="confirmPassword" 
                             value={confirmPassword} onChange={handleChange}
-                            placeholder="Confirm Password" />
+                            placeholder="Confirm Password" required />
                         </div>
                     </div>
                     <div className="form-credentials checkbox-agree-hidden">

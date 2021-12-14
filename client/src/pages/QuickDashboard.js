@@ -12,11 +12,11 @@ export default function QuickDashboard() {
                 <div>P&L</div>
                 <div>% Return</div>
             </div> 
-            <div className="quick-dashboard-numbers">
-                <div className="">₹ &nbsp;{investedAmount}</div>
-                <div>₹ &nbsp;{currentValue}</div>
-                <div>₹ &nbsp;{totalPnl}</div>
-                <div>{((totalPnl)/investedAmount)*100}%</div>
+            <div className="quick-dashboard-numbers numberFont">
+                <div className="numberFont">₹ &nbsp;{investedAmount}</div>
+                <div className="numberFont" >₹ &nbsp;{currentValue}</div>
+                <div className="numberFont" >₹ &nbsp;{totalPnl}</div>
+                <div className="numberFont" >{  Math.round( ( ( (totalPnl)/investedAmount)*100 ) * 100) / 100   }%</div>
             </div>
         </div>
     )

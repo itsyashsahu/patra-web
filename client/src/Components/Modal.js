@@ -119,7 +119,8 @@ export default function Modal() {
             stockName,
             transType,
             qty,
-            "transPrice":currPrice
+            "transPrice":currPrice,
+            "purchased_at": new Date()
         }
 
         
@@ -128,7 +129,7 @@ export default function Modal() {
         if( (option==='buy' && qty>0 && user.fundsAvailable >= ((+qty)*currPrice) )  )
         {
             const finalInput = {...inputs,price: currPrice, option,stockSymbol ,stockName}
-            console.log("buy final inputs ",finalInput)
+            // console.log("buy final inputs ",finalInput)
             const updateData= {
                 stockName,
                 "close":currPrice,
@@ -249,7 +250,7 @@ export default function Modal() {
                                 (stockData.option==="buy")?
                                 <>
                                 <span>Margin Required : <p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{Math.round( (qty*currPrice) * 100) / 100}</p> </span>
-                                <span>funds Available : <p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{user.fundsAvailable}</p> </span>
+                                <span>funds Available : <p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{ user.fundsAvailable }</p> </span>
                                 <span>Balance After transaction:<p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{user.fundsAvailable - (Math.round( (qty*currPrice) * 100) / 100)}</p>  </span>
                                 </>
                                 :null 

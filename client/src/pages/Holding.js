@@ -67,9 +67,10 @@ export default function Holding() {
                 <div className="holdings-page">
                     { (holdings[0])?
                         holdings.map( function (sname,index){
-
+                            const stockPercentageChange = ( ( holdings[index]["close"]- holdings[index]["price"] ) / holdings[index]["price"] )*100 ;
                             stockPnl = ( (holdings[index]["close"]- holdings[index]["price"] )*holdings[index]["qty"]  );
                             var currStockValue = holdings[index]["qty"]* holdings[index]["close"];
+                            console.log(sname)
                             return(
                                 <>
                                     <div className="holdings">
@@ -78,8 +79,8 @@ export default function Holding() {
                                         <div><p className="table-extra-text">Buy : &nbsp;</p>{holdings[index]["price"]}</div>
                                         <div><p className="table-extra-text">Curr. Val. : &nbsp;</p>₹&nbsp;{  Math.round( ( currStockValue) * 100) / 100  }</div>
                                         <div><p className="table-extra-text">LTP : &nbsp;</p>₹&nbsp;{holdings[index]["close"]}</div>
-                                        <div >₹&nbsp;{stockPnl}</div>
-                                        <div>{( ( holdings[index]["close"]- holdings[index]["price"] ) / holdings[index]["price"] )*100 }%</div>
+                                        <div >₹&nbsp;{ Math.round( ( stockPnl ) * 100) / 100  }</div>
+                                        <div>{  Math.round( ( stockPercentageChange) * 100) / 100   }%</div>
                                     </div>
                                 </>
                             )
@@ -89,8 +90,8 @@ export default function Holding() {
                 </div>
                 <div className="holdings-totaldaypnl">
                     <div className="holdings-totaldaypnl-label">Today's P&L</div>
-                    <div>{totalPnl}</div>
-                    <div>{( ( totalPnl )/investedAmount )*100}%</div>
+                    <div className="numberFont">{totalPnl}</div>
+                    <div className="numberFont" >{ Math.round( ( ( ( totalPnl )/investedAmount )*100 ) * 100) / 100}%</div>
                 </div>
 
                 <QuickDashboard/>

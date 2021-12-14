@@ -7,9 +7,10 @@ import axios from 'axios'
 import lottie from "lottie-web";
 import { updateEditedUser } from '../redux/userReducer';
 
+
 export default function Userinfo() {
     const history = useHistory();
-
+    
     const [ isUserUpdated , setIsUserUpdated ] = useState(false);
     // for setting up lotties 
     const container = useRef(null)

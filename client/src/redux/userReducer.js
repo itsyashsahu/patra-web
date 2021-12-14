@@ -14,21 +14,21 @@ export const userReducer = createSlice({
             state.isAuth = true
         },
         updateUser: (state,action)=>{
-            console.log(action.payload)
+            // console.log(action.payload)
             if(state.user){
-                state.user.fundsAvailable = state.user.fundsAvailable + action.payload;
-                console.log(state);
+                state.user.fundsAvailable = Math.round( ( state.user.fundsAvailable + action.payload ) * 100) / 100 ;
+                // console.log(state);
             }
         },
         setUser: (state,action)=>{
             state.user = { ...state.user , ...action.payload }
-            console.log(state.user.name);
+            // console.log(state.user.name);
         },
         updateEditedUser: (state,action)=>{
             const { name, proffession,dob,phone } = action.payload;
-            console.log("state",state )
-            console.log("state.isAuth",state.isAuth)
-            console.log("action.payload" , action.payload)
+            // console.log("state",state )
+            // console.log("state.isAuth",state.isAuth)
+            // console.log("action.payload" , action.payload)
             // take the funds available
             if(name){
                 state.user.name = name;

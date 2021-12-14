@@ -83,9 +83,9 @@ const userSchema = new mongoose.Schema({
             price:{
                 type:Number
             },
-            created_at:{ 
+            purchased_at:{ 
                 type: Date,
-                default: () => Date.now(),
+                default: Date.now(),
             }
             
         }]

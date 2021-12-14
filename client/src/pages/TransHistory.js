@@ -3,6 +3,10 @@ import NavbarMobile from './NavbarMobile'
 import QuickDashboard from './QuickDashboard'
 import {useSelector} from 'react-redux';
 
+
+
+
+
 export default function TransHistory() {
     const user = useSelector( (state)=> state.user.user )
     const originalTransHistory = useSelector( (state)=> state.transHistory.transHistoryArr )
@@ -18,6 +22,16 @@ export default function TransHistory() {
         userName = capitalizeFirstLetter(user.name);
     }
     // console.log("username",userName);
+
+
+    // code to get the next occuring friday 
+
+    
+    
+
+
+
+
 
     return (
         <div className="holdings-transHistory-section">
@@ -40,6 +54,14 @@ export default function TransHistory() {
                 {
                     (transHistory[0])?
                     transHistory.map( function (sname,index){
+                        // console.log(sname,sname.purchased_at)
+                        const options = { hour: "numeric",minute: "numeric",second: "numeric" }
+                        const dateAndTime = new Date(sname.purchased_at).toLocaleDateString('hi-IN', options)
+
+                        let date = dateAndTime.slice(0,10)
+                        let time = dateAndTime.slice(11)
+                        // console.log(date,time)
+
                         return(
                             <>
                                 <div className="transactions">
@@ -52,9 +74,9 @@ export default function TransHistory() {
 
                                     <div><p className="table-extra-text">Qty : &nbsp; </p>{transHistory[index]["qty"]} </div>
                                     <div><p className="table-extra-text">Transaction Price : &nbsp; </p>₹ &nbsp;{transHistory[index]["transPrice"]} </div>
-                                    <div className="transValue">₹ &nbsp;{transHistory[index]["transPrice"]*transHistory[index]["qty"]}</div>
-                                    <div >13/04/2020</div>
-                                    <div>08:34:56:45</div>
+                                    <div className="transValue">₹ &nbsp;{ Math.round( ( transHistory[index]["transPrice"]*transHistory[index]["qty"] ) * 100) / 100 }</div>
+                                    <div >{date}</div>
+                                    <div>{time}</div>
                                 </div>
                             </>
                         )

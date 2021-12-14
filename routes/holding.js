@@ -66,6 +66,7 @@ router.post('/trans',requireLogin, async function(req, res, next) {
                     "qty":quantity,
                     "transPrice":price,
                     stockName,
+                    "purchased_at": new Date()
                 }
                 } 
             }).then((res)=>{

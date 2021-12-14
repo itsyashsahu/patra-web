@@ -31,9 +31,9 @@ router.get('/',requireLogin, async function(req, res, next) {
     try{
         const user = await User.findById({"_id": id },{transHistory:1,_id:0})
         .then( (res)=>{
+            // console.log("result of transhistory",res);
             return res.transHistory
         })
-        // console.log(user);
         res.send(user);
     }catch(err){
         console.log(err);

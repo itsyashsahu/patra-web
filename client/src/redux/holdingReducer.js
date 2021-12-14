@@ -20,7 +20,7 @@ export const holdingReducer = createSlice({
         },
         updateHolding:(state,action)=>{
             const payload = action.payload;
-            console.log('update holding has been triggered',payload)
+            // console.log('update holding has been triggered',payload)
             
             // find the stock if user already has the stock 
             var stockIndex;
@@ -51,7 +51,7 @@ export const holdingReducer = createSlice({
     
                 })
                 
-                console.log("this is when it has an index ")
+                // console.log("this is when it has an index ")
             }else if(!(stockIndex)){
                 // if user is adding new stock to portfolio then add a entry to the holding Array
                 const data = {
@@ -62,7 +62,7 @@ export const holdingReducer = createSlice({
                     price:payload.buyPrice,
                 }
                 state.holdingArr.push(data)
-                console.log("this is when it is undefined ")
+                // console.log("this is when it is undefined ")
                 
             }
 
@@ -90,7 +90,7 @@ export const holdingReducer = createSlice({
 
         },
         calculateTotal:(state,action)=>{
-            console.log('calculateTOtal has been triggered',action.payload)
+            // console.log('calculateTOtal has been triggered',action.payload)
 
             var resFinal = action.payload;
             // console.log("this is invested ant outside",state.investedAmount,action.payload)

@@ -13,6 +13,7 @@ import setAuthToken from '../Components/setAuthToken';
 // this is the function that returns the prices of the stock provided to it
 // this also filters the stocks available in NSE or BSE
 export const getPriceData = async (symbol) => {
+    
         let url1 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ZTR22AB0MG26X48D`;
         let results = await fetch(url1);
         results = await results.json();
@@ -52,7 +53,7 @@ export default function Watchlist() {
     const [mobile, setMobile] = useState(history.location.pathname);
     useEffect(() => {
         // console.log("asdlkjfhasdjkj",window.location.pathname)
-        console.log("welcome to watchlist ")  
+        // console.log("welcome to watchlist ")  
         if(window.location.pathname === '/watchlist'){
             setMobile("watchlistMobile")
         }else{
@@ -95,8 +96,6 @@ export default function Watchlist() {
                 })
                 .catch((err)=>console.log(err) );             
             })
-            .then( () => {
-            })
         })
         .catch( (err) => console.log(err));
 
@@ -125,7 +124,7 @@ export default function Watchlist() {
         // axios.post('http://localhost:4000/users/getinfo', uid)
         axios.get('api/users/getinfo')
         .then( (res)=>{
-            console.log(res);
+            // console.log(res);
             dispatch(setUser(res.data))
                  
         })
@@ -284,7 +283,7 @@ export default function Watchlist() {
             </div>
             <div>
             <div className="watchlist-item-caution numberFont">
-                    The Api supports only 5 calls per minute please make sure your holdings and watchlist combined have 5 entries to ensure proper working
+                    The Api supports only 5 calls per minute please make sure your holdings and watchlist combined have 5 entries to ensure proper working. The Prices will update next working day.
             </div>
             <div className="watchlist-nav">
                 <div className="watchlist-nav-items"><Link to="#">1</Link></div>
