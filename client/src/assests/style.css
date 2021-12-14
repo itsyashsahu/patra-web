@@ -547,7 +547,7 @@ section{
     }
     /* restructing the recent reports panel */
     .recent-reports{
-        grid-template-columns: 0.8fr 2fr 0.5fr !important;
+        grid-template-columns: 0.8fr 2fr 0.9fr !important;
         grid-template-rows: 1fr 1.7fr 1fr;
     }
     .recent-reports >:nth-child(4){ 
