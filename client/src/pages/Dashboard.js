@@ -291,11 +291,11 @@ export default function Dashboard() {
                                 </div>
                                 <div>
                                     <div>Estimated Curr. Value&nbsp; : &nbsp;</div>
-                                    <div className="numberFont" >{`₹ \u00A0${ inputs.desiredInvestedAmt* (1+ (ExploreResults.percentageChange /100) ) }` }</div>
+                                    <div className="numberFont" >{`₹ \u00A0${ Math.round( ( inputs.desiredInvestedAmt* (1+ (ExploreResults.percentageChange /100) ) ) * 100) / 100 }` }</div>
                                 </div>
                                 <div>
                                     <div>P & L : </div>
-                                    <div className="numberFont" >{`₹ \u00A0${ inputs.desiredInvestedAmt* ((ExploreResults.percentageChange /100) ) }` }</div>
+                                    <div className="numberFont" >{`₹ \u00A0${ Math.round( ( inputs.desiredInvestedAmt* ((ExploreResults.percentageChange /100) ) ) * 100) / 100 }` }</div>
                                 </div>
                                 <div>
                                     <div>Percentage Change : </div>
