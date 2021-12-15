@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import NavbarMobile from './NavbarMobile';
 import {useSelector} from 'react-redux';
-
+import Fade from 'react-reveal/Fade';
 
 export const getWeekPriceData = async (symbol,dateInputGiven) => {
     
@@ -134,6 +134,8 @@ export default function Dashboard() {
     const [showExploreResults , setShowExploreResults ] = useState(false)
     const [ displayErr , setDisplayErr ] = useState(false);
     const [ errMessage , setErrMessage ] = useState("");
+    var [ isLoading , setIsLoading ] = useState(false);
+
     // reversing the reports array and creating a copy as i want to display it in reverse order 
     // newer item shold be on top 
     // const reports = originalReports.map(item => item).reverse();
@@ -198,7 +200,8 @@ export default function Dashboard() {
                     // currently setting only results
                     const [stockSymbol,stockname] = inputs.stockName.split("and");
                     const formatResults = { stockSymbol,stockname, ...resultOfExplore }
-                    setExploreResults(formatResults)
+                    setExploreResults(formatResults);
+                    setIsLoading(false);
                     // resultExplore = resultOfExplore;
                     // console.log(resultOfExplore)
                     // console.log(formatResults)
@@ -211,7 +214,8 @@ export default function Dashboard() {
     }
 
     return (
-            <div className="dashboard">
+        <div className="dashboard">
+                <Fade right>
                 {/* <form  method="POST" onSubmit={handleSubmit} > */}
                 <div className='dashboard-area'>
 
@@ -241,8 +245,7 @@ export default function Dashboard() {
 
                     <div className="dashboard-text salsa dashboard-explore-text-wrapper">
                         <span className="salsa">
-                            Explore the beauty of Investing  
-                            
+                            Explore the beauty of Investing      
                         </span>
                         
                         {
@@ -385,9 +388,20 @@ export default function Dashboard() {
                                             <div class="form-credentials signup-submit ">
                                                 <div>
                                                     {/* set errMessage codition set handle submit done */}
-                                                    <button onClick={handleSubmit} 
+                                                    <button onClick={(e)=>{ handleSubmit(e); setIsLoading(true); } } 
                                                     type="submit" name="signup" id="signup" 
-                                                    value="Register">Click Me to get the Results</button>
+                                                    value="Register">
+                                                        {
+                                                            (isLoading)?
+                                                            <>
+                                                                <p>Please Wait</p>
+                                                                <div className="loader" ></div> 
+                                                            </>:
+                                                            `Click Me to get the Results`
+
+                                                        }
+                                                    
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -401,6 +415,7 @@ export default function Dashboard() {
                 </div>
 
                 <NavbarMobile/>
+            </Fade>
             </div>
     )
 }

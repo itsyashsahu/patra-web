@@ -10,6 +10,8 @@ import axios from 'axios'
 import NavbarMobile from './NavbarMobile'
 // this set the authorization token for every axios request;
 import setAuthToken from '../Components/setAuthToken';
+import Fade from 'react-reveal/Fade';
+
 // this is the function that returns the prices of the stock provided to it
 // this also filters the stocks available in NSE or BSE
 export const getPriceData = async (symbol) => {
@@ -192,7 +194,7 @@ export default function Watchlist() {
     
     return (
         <div class = {`watchlist ${mobile}`}>
-            
+            <Fade left >
             <form method="POST" onSubmit={handleSubmit}>
             <div className="watchlist-item-header">
 
@@ -214,6 +216,7 @@ export default function Watchlist() {
                 watchlistdata.map( function (sname,index){
                     return(
                         <>
+                        <Fade top>
                             <div className="watchlist-item">
                                 <span className={`watchlist-items-label ${watchlistdata[index]["stockEndedIn"]}`}>{ watchlistdata[index]["stockName"]}</span>
                                 <span className="watchlist-options" >
@@ -274,6 +277,7 @@ export default function Watchlist() {
                                     </Link>
                                 </span>
                             </div>
+                            </Fade>
                         </>
                     )
                 }):""
@@ -294,6 +298,7 @@ export default function Watchlist() {
             </div>
             {(mobile==='watchlistMobile')?<NavbarMobile/>:null}
             </div>
+            </Fade>
         </div>
     )
 }

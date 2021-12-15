@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import React,{useState,useEffect,useRef} from 'react'
+import {Link, useHistory } from 'react-router-dom'
 import NavbarMobile from './NavbarMobile'
 import QuickDashboard from './QuickDashboard'
 import {useSelector} from 'react-redux';
@@ -7,12 +7,29 @@ import axios from 'axios'
 import {useDispatch} from 'react-redux';
 import { setWatchlist,removeStockEntry} from '../redux/watchlistReducer';
 import { getPriceData } from './Watchlist';
+import Fade from 'react-reveal/Fade';
 // import {getPriceData} 
+import lottie from "lottie-web";
 
 
 export default function SearchStock() {
+
+    const container = useRef(null)
+    useEffect( () => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer:'svg',
+            loop: true ,
+            autoplay:true,
+            animationData: require('../assests/lotties/79796-loader.json')
+        })
+    },[])
+
     const dispatch = useDispatch();
-    var addStockData;
+    const history = useHistory();
+
+    var addStockData ;
+    var [ addStockDataState , setAddStockDataState ] = useState()
     var watchlistdata = useSelector( (state) => state.watchlist.watchlistArr )
     
     var isFound;
@@ -22,6 +39,7 @@ export default function SearchStock() {
 
     const [stockSearched,setStockSearched ] = useState("");
     const [ searchResults, setSearchResults ] = useState( [] );
+    var [ isLoading , setIsLoading ] = useState(false);
     
     //searched results are stored in searchResults array hook
     async function search(keyword) {
@@ -80,10 +98,15 @@ export default function SearchStock() {
     // const uid = { "userId": userId };
 
     const addStock = async (stockSymbol,stockName) =>{
+        // setAddStockData({ 
+        //     stockName,
+        //     stockSymbol
+        // })
         addStockData = { 
             stockName,
             stockSymbol
         }
+        setAddStockDataState(addStockData)
         watchlistdata.find( (stock,index)=>{
             if(stock.stockName === stockName ){
                 isFound = true;
@@ -106,6 +129,8 @@ export default function SearchStock() {
                         .then( (res)=>{
                             // console.log("this it result of get price data of add stock ",res);
                             addStockArr={ ...addStockArr,...res}
+                            setIsLoading(false)
+                            history.push('./watchlist');
                         })
                         
                         dispatch( setWatchlist( addStockArr ) )
@@ -132,6 +157,8 @@ export default function SearchStock() {
                 // watchlistdata.pull
                 // console.log(watchlistdata , stockSymbol)
                 dispatch(removeStockEntry(stockSymbol));
+                
+                setIsLoading(false)
                 // watchlistdata.splice( watchlistdata.findIndex(item => item.stockSymbol === stockSymbol), 1);
                 // console.log(watchlistdata)
             })
@@ -143,7 +170,7 @@ export default function SearchStock() {
 
     return (
         <div className="searchStock">
-            
+        <Fade right >
         <form onSubmit={handleSubmit}>
         <div className="searchStock-text">
             <div>Search Results</div>
@@ -177,8 +204,10 @@ export default function SearchStock() {
                         })
 
                         // console.log("the stock ",searchResults[index]["2. name"],"and the result ",isStockFound)
+                        console.log("the results is ",addStockDataState)
                         return(
                             <>
+                            <Fade top>
                             <div className="searchresItem">
                                 <div>{ searchResults[index]["2. name"]}</div>
                                 {
@@ -193,16 +222,36 @@ export default function SearchStock() {
                                         </svg>
                                         </Link>
                                     </div>:
-
-                                    <div onClick={ () => addStock( searchResults[index]["1. symbol"] , searchResults[index]["2. name"] ) } >
-                                        {/* \onClick={() => { setEntrydata( data[index]["1. symbol"] ); }  */}
-                                        <Link to="#" >
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4zm1 11C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>
-                                        </Link>
-                                    </div>
+                                    
+                                        (isLoading)? 
+                                            // (addStockData)?
+                                            (addStockDataState.stockSymbol === searchResults[index]["1. symbol"] )?
+                                                <div>
+                                                    {/* is lo */}
+                                                    {/* <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                                                        </svg> */}
+                                                    <div className="loader" ></div>
+                                                </div>
+                                            :
+                                            <div onClick={ () =>{ addStock( searchResults[index]["1. symbol"] , searchResults[index]["2. name"] ); setIsLoading(true)}  } >
+                                                {/* \onClick={() => { setEntrydata( data[index]["1. symbol"] ); }  */}
+                                                <Link to="#" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4zm1 11C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>
+                                                </Link>
+                                            </div>
+                                        :
+                                            
+                                        <div onClick={ () =>{ addStock( searchResults[index]["1. symbol"] , searchResults[index]["2. name"] ); setIsLoading(true)}  } >
+                                            {/* \onClick={() => { setEntrydata( data[index]["1. symbol"] ); }  */}
+                                            <Link to="#" >
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M11 11V7h2v4h4v2h-4v4h-2v-4H7v-2h4zm1 11C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>
+                                            </Link>
+                                        </div>
 
                                 }
                             </div>
+                            </Fade>
                             </>
                         )
                     }
@@ -226,7 +275,7 @@ export default function SearchStock() {
 
         </div>
 
-        
+        </Fade>
                    
         <QuickDashboard/>
         

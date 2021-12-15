@@ -6,7 +6,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import axios from 'axios'
 import lottie from "lottie-web";
 import { updateEditedUser } from '../redux/userReducer';
-
+import Fade from 'react-reveal/Fade';
 
 export default function Userinfo() {
     const history = useHistory();
@@ -98,8 +98,16 @@ export default function Userinfo() {
         sessionStorage.removeItem('jwtToken');
         history.push("./")
     }
+    const logoutConfirm = () =>{
+        if (window.confirm("Do You Want to Logout ???")) {
+            logout();
+          } else {
+            console.log("you cancelled the logout")
+          }
+    }
     return (
             <div className="userInfo">
+                <Fade right>
                 <div className="userInfo-wrapper">
 
                     <div className="userInfoImg">
@@ -119,6 +127,7 @@ export default function Userinfo() {
                     </div>
                     {
                         editUser?
+                        <Fade>
                         <form  method="POST" onSubmit={handleSubmit} >
                             {
                                 (isUserUpdated)?
@@ -156,7 +165,7 @@ export default function Userinfo() {
                                     <div class="form-credentials signup-form-input">
                                         <div>
                                             <i class="ri-phone-fill"></i>
-                                            <input type="phone" className="numberFont" name="phone" placeholder="Phone No." 
+                                            <input type="number" className="numberFont" name="phone" placeholder="Phone No." 
                                                 value={phone} onChange={handleChange}/>
                                         </div>
                                     </div>
@@ -206,8 +215,9 @@ export default function Userinfo() {
                                 </div>
                                 
                             }
-                        </form> :
-
+                        </form>
+                        </Fade> :
+                        <Fade>
                         <div className="userInfo-split">
                         <div>
                             {/* <!-- <div>Edit Your Information</div> --> */}
@@ -230,15 +240,17 @@ export default function Userinfo() {
                             <div class="signup-submit ">
                                 <div>
                                     <button type="submit" name="signup" id="signup" 
-                                    onClick={logout}
+                                    onClick={logoutConfirm}
                                     value="Register">Logout</button>
                                 </div>
                             </div>
                         </div>
                         </div>
+                        </Fade>
 
                     }
                 </div>
+                </Fade>
                 
             <NavbarMobile/>
 

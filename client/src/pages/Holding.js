@@ -2,6 +2,7 @@ import React from 'react'
 import NavbarMobile from './NavbarMobile'
 import QuickDashboard from './QuickDashboard'
 import {useSelector} from 'react-redux';
+import Fade from 'react-reveal/Fade';
 
 export const getPriceData = async (symbol) => {
         let url1 = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=ZTR22AB0MG26X48D`;
@@ -49,7 +50,7 @@ export default function Holding() {
 
     return (
             <div className="holdings-transHistory-section">
-
+                <Fade right>
                 <div className="holdings-transHistory-username-col">
                     <div className="">Holdings</div>
                     <div>{userName}</div>
@@ -70,9 +71,10 @@ export default function Holding() {
                             const stockPercentageChange = ( ( holdings[index]["close"]- holdings[index]["price"] ) / holdings[index]["price"] )*100 ;
                             stockPnl = ( (holdings[index]["close"]- holdings[index]["price"] )*holdings[index]["qty"]  );
                             var currStockValue = holdings[index]["qty"]* holdings[index]["close"];
-                            console.log(sname)
+                            // console.log(sname)
                             return(
                                 <>
+                                <Fade top>
                                     <div className="holdings">
                                         <div className="stockname"> {holdings[index]["stockName"]} </div>
                                         <div><p className="table-extra-text">Qty. &nbsp;</p>{holdings[index]["qty"]}</div>
@@ -82,6 +84,7 @@ export default function Holding() {
                                         <div >₹ { Math.round( ( stockPnl ) * 100) / 100  }</div>
                                         <div>{  Math.round( ( stockPercentageChange) * 100) / 100   }%</div>
                                     </div>
+                                </Fade>
                                 </>
                             )
                         }):""
@@ -93,7 +96,7 @@ export default function Holding() {
                     <div className="numberFont">{totalPnl}</div>
                     <div className="numberFont" >{ Math.round( ( ( ( totalPnl )/investedAmount )*100 ) * 100) / 100}%</div>
                 </div>
-
+                </Fade>
                 <QuickDashboard/>
                 <NavbarMobile/>
                 

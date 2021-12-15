@@ -74,7 +74,7 @@ export const holdingReducer = createSlice({
 
             state.holdingArr.map( function (resFinal,index){
 
-                var stockInvestedAmount = ( ( resFinal.close * (+resFinal.qty) ) )
+                var stockInvestedAmount = ( ( resFinal.price * (+resFinal.qty) ) )
                 state.investedAmount = Math.round( ( state.investedAmount +  stockInvestedAmount ) * 100) / 100;
 
                 // calcutating totalPnl 
@@ -96,7 +96,7 @@ export const holdingReducer = createSlice({
             // console.log("this is invested ant outside",state.investedAmount,action.payload)
             // calculating the ttlinvested amount 
             
-            var stockInvestedAmount = ( ( resFinal.close * (+resFinal.qty) ))
+            var stockInvestedAmount = ( ( resFinal.price * (+resFinal.qty) ))
             state.investedAmount = Math.round( ( state.investedAmount +  stockInvestedAmount) * 100) / 100;
 
             // calcutating totalPnl 

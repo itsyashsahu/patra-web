@@ -2,7 +2,7 @@ import React from 'react'
 import NavbarMobile from './NavbarMobile'
 import QuickDashboard from './QuickDashboard'
 import {useSelector} from 'react-redux';
-
+import Fade from 'react-reveal/Fade';
 
 
 
@@ -35,7 +35,7 @@ export default function TransHistory() {
 
     return (
         <div className="holdings-transHistory-section">
-
+            <Fade right >
             <div className="holdings-transHistory-username-col">
                 <div className="">Transaction history</div>
                 <div>{userName}</div>
@@ -64,6 +64,7 @@ export default function TransHistory() {
 
                         return(
                             <>
+                            <Fade top>
                                 <div className="transactions">
                                     <div className="stockname">{transHistory[index]["stockName"]} </div>
                                     {
@@ -78,11 +79,13 @@ export default function TransHistory() {
                                     <div >{date}</div>
                                     <div>{time}</div>
                                 </div>
+                            </Fade>
                             </>
                         )
                     }):""
                 }
             </div>
+            </Fade>
             <QuickDashboard/>
             <NavbarMobile/>
         </div>

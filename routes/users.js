@@ -137,8 +137,8 @@ router.get('/check',requireLogin,(req,res)=>{ // this is protected resource user
 router.post('/', async function(req, res, next) {
   try{
     
-    const { name,email,password } = req.body;
-    // console.log(req.body);
+    const { name,email,password,proffession,dob,gender,phone } = req.body;
+    console.log(req.body);
     // console.log(name,email,password);
     if(!email || !password ){
       // status 422 means client jo karna chahta h wo server samajh gaya h 
@@ -158,7 +158,12 @@ router.post('/', async function(req, res, next) {
     new User({
       email:email,
       password:hashedPass,
-      name:name
+      name:name,
+      proffession:proffession,
+      dob:dob,
+      gender:gender,
+      phone:phone
+
     }).save()
 
     res.status(200).json({message:"You Can Login Now "});

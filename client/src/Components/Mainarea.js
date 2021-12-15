@@ -9,6 +9,9 @@ import TransHistory from '../pages/TransHistory'
 import Reports from '../pages/Reports'
 import Userinfo from '../pages/Userinfo'
 import SearchStock from '../pages/SearchStock'
+// import Zoom from 'react-reveal/Zoom';
+// import HeadShake from 'react-reveal/HeadShake';
+// import Pulse from 'react-reveal/Pulse';
 // import Intro from '../pages/Intro'
 // import ScrollToBottom from 'react-scroll-to-bottom';
 
@@ -19,13 +22,14 @@ export default function Mainarea() {
     //     scrollDiv.current.scrollIntoView({ behavior: "smooth"});
     // }
     // useEffect(scrollToBottom,[])
-    useEffect(() =>{
-        scrollDiv.current.scrollIntoView();
-    },[])
+    // useEffect(() =>{
+    //     scrollDiv.current.scrollIntoView();
+    // },[])
 
     return (
         <>
-        <scrollToBottom>
+        {/* <scrollToBottom> */}
+        {/* <Pulse > */}
             <div className= "navbar" ref={scrollDiv} >
                 <WatchlistHeader/>
                 <Navbar/>
@@ -49,7 +53,8 @@ export default function Mainarea() {
                         
                 </Switch>
             </div>
-        </scrollToBottom>
+        {/* </Pulse> */}
+        {/* </scrollToBottom> */}
         </>
     )
 }

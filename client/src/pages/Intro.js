@@ -3,7 +3,7 @@ import '../assests/style-intro.css'
 import Navhome from '../Components/Navhome'
 import lottie from "lottie-web";
 import {Link} from 'react-router-dom';
-
+import Fade from 'react-reveal/Fade';
 
 export default function Intro() {
     const [ signupText , setSignupText ] = useState(false)
@@ -41,6 +41,7 @@ export default function Intro() {
                 <div className="intro-frontBanner-description">
 
                     <div className="into-tagline-section">
+                    <Fade left>
                         <div className="intro-tagline">
                             <span>Learn Investing</span><br/>
                             <p>
@@ -51,11 +52,11 @@ export default function Intro() {
                                 <button type="submit" name="signup" id="signup" 
                                 value="Register" 
                                 onMouseOver={()=>{setSignupText(true)
-                                                    console.log("onMouseOver")    
+                                                    // console.log("onMouseOver")    
                                 } }
                                 onMouseOut={()=>{ 
                                     setTimeout( setSignupFun , 4000)
-                                    console.log("onMouseOut")    
+                                    // console.log("onMouseOut")    
                                 } }
 
                                     >
@@ -75,15 +76,18 @@ export default function Intro() {
                             </div>
 
                         </div>
+                        </Fade>
                     </div>
 
                 </div>
 
+                <Fade right>
                 <div className="intro-frontBanner-img">
                     {/* this contains the lottie animation */}
                     <div className="intro-front-lottie" ref={container}>
                     </div>
                 </div>
+                </Fade>
 
             </div>
         </section>

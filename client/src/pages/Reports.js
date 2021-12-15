@@ -2,6 +2,7 @@ import React from 'react'
 import NavbarMobile from './NavbarMobile'
 import {useSelector} from 'react-redux';
 import QuickDashboard from './QuickDashboard';
+import Fade from 'react-reveal/Fade';
 
 export default function Reports() {
     const user = useSelector( (state)=> state.user.user )
@@ -23,7 +24,7 @@ export default function Reports() {
     return (
 
         <div className="holdings-transHistory-section">
-
+        <Fade right>
         <div className="holdings-transHistory-username-col">
             <div className="">Reports</div>
             <div>{userName}</div>
@@ -53,6 +54,7 @@ export default function Reports() {
                 reports.map( function (sname,index){
                     return(
                         <>
+                        <Fade top>
                             <div className="recent-reports">
                                 <div className="stockname">{reports[index]["stockName"]}</div>
                                 <div><p className="table-extra-text">Buy : </p>₹&nbsp;{reports[index]["buyPrice"]}</div>
@@ -61,6 +63,7 @@ export default function Reports() {
                                 <div >₹ { Math.round( ( ((reports[index]["sellPrice"]-reports[index]["buyPrice"])*reports[index]["qty"] ) ) * 100) / 100 }</div>
                                 <div>{ Math.round( ( ((reports[index]["sellPrice"]-reports[index]["buyPrice"])/reports[index]["buyPrice"])*100  ) * 100) / 100 }%</div>
                             </div>
+                        </Fade>
                         </>
                     )
                 }):""
@@ -68,6 +71,7 @@ export default function Reports() {
 
            
         </div>
+        </Fade>
 
         <QuickDashboard/>
         <NavbarMobile/>

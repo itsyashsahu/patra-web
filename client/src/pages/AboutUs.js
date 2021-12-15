@@ -4,6 +4,7 @@ import '../assests/style-about.css'
 import img from "../assests/yash.jpg"
 import {Link} from 'react-router-dom';
 import { ExternalLink } from 'react-external-link';
+import Fade from 'react-reveal/Fade';
 
 export default function AboutUs() {
     const [ showDetails , setshowDetails ] = useState(false)
@@ -17,7 +18,9 @@ export default function AboutUs() {
             <Navhome page="LogIn"/>
             <section class="about-section">
                 <div class="about-section-wrapper">
+                    
                     <div class="about-section-img">
+                    <Fade left>
                         <div className="about-section-img-box">
                             <img alt="yash's profile" src={img} />
                             <div className="about-section-social-icons">
@@ -77,9 +80,11 @@ export default function AboutUs() {
                                             </div>:""
                             }
                         </div>
+                    </Fade>
                     </div>
+
                     <div class="about-section-description">
-                        
+                        <Fade right>
                         <div>
                             <div>
                                 <span>Hii</span>
@@ -127,7 +132,7 @@ export default function AboutUs() {
                             </span>
 
                         </div>
-                        
+                        </Fade>
                     </div>
 
                 </div>

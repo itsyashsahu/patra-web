@@ -835,8 +835,15 @@ padding: 0.6rem 0rem 0rem 0.5rem;
     height:1.7rem;
     width: 1.7rem;
 }
+.dashboard-submit div div button div{
+    width: 12%;
+}
 .dashboard-submit div div button{
-    width:60%
+    width:80%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+
 }
 .dashboard > form {
     overflow:hidden;
@@ -1253,15 +1260,16 @@ padding: 0.6rem 0rem 0rem 0.5rem;
 .section-wrapper{
     display: flex;
     justify-content:center;
-    padding: 0 6rem 0 13rem;
+    padding: 0 6rem 0 9rem;
 }
 .signup-form-div,
 .signup-form-wrapper{
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding:1rem 0 0 0;
+    /* padding:1rem 0 0 0; */
     overflow:hidden;
+    justify-content: center;
 }
 .signup-img{
     display: flex;
@@ -1282,10 +1290,12 @@ padding: 0.6rem 0rem 0rem 0.5rem;
 .form-credentials{
     flex-direction: row;
     padding:0.8rem 0rem;
+    /* justify-content: center; */
+    display: flex;
 }
 .form-credentials div{
     display: flex;
-    width: 100%;
+    width: 80%;
 }
 .signup-form-input div select,
 .signup-form-input div input{
@@ -1294,7 +1304,8 @@ padding: 0.6rem 0rem 0rem 0.5rem;
     padding:0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 2.5rem;
-    width:75%;
+    /* width:75%; */
+    width:100%;
     
 }
 .form-credentials div input:focus{
@@ -1319,13 +1330,15 @@ padding: 0.6rem 0rem 0rem 0.5rem;
     padding: 0.6rem 0rem 0rem 0.5rem;
 }
 .signup-submit div button{
-    padding: 0.6rem 0 !important;
+    padding: 0.6rem 5rem;
+    /* padding: 0.6rem 5rem !important; */
     background: #6dabe4;
     color: #fff;
     border: none;
     cursor: pointer;
     margin-right:auto;
-    width: 40%;
+    /* width: 40%; */
+    width: 75%;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -1406,7 +1419,7 @@ padding: 0.6rem 0rem 0rem 0.5rem;
 }
 @media screen and (max-width: 57em) {
     .section-wrapper{
-        padding:0 5rem 0 9rem;
+        padding:0 5rem 0 5rem;
     }
     .nav-home div{
         font-size: 2.5rem ;
@@ -1418,12 +1431,20 @@ padding: 0.6rem 0rem 0rem 0.5rem;
     .signup-form-heading{
         font-size:2.2rem;
     }
+    .signin-form-div {
+        margin-left: 6rem !important;
+    }
 }
 @media screen and (max-width: 43em) {
-    .login-option-onSignup{
-        display:contents;
+    .form-credentials{
+        justify-content:center;
     }
-    .signup-img{
+    .login-option-onSignup{
+        /* display:contents; */
+        display:flex;
+        justify-content:center;
+    }
+    .signup-img > :last-child{
         display:none;
     }
     .section-wrapper{
@@ -1432,6 +1453,7 @@ padding: 0.6rem 0rem 0rem 0.5rem;
         /* align-items: center; */
         margin: auto;
         /* padding-bottom:3rem; */
+        flex-direction: column-reverse;
     }
     .signup-form-input{
         width:100%;
@@ -1477,7 +1499,7 @@ padding: 0.6rem 0rem 0rem 0.5rem;
 .section-signin-wrapper{
     display: flex;
     justify-content:center;
-    padding: 0 10rem 0 15rem;
+    padding: 0 6rem 0 10rem;
 }
 
 .signin-img> :last-child{
@@ -1498,10 +1520,15 @@ padding: 0.6rem 0rem 0rem 0.5rem;
         width:100vw;
     }
     .signin-img{
-        display:none;
+        /* display:none; */
+        width: 75%;
+    }
+    .signin-img > :last-child{
+        display: none;
     }
     .signin-form-div{
-        margin:auto;
+        /* margin:auto; */
+        margin: 0 !important;
     }
     .section-signin-wrapper{
         width: 100%;
@@ -1509,6 +1536,8 @@ padding: 0.6rem 0rem 0rem 0.5rem;
         height: 100%;
         padding: 0;
         align-items: center;
+        display: flex;
+        flex-direction: column;
         
     }
     .signin-section{
@@ -1517,4 +1546,79 @@ padding: 0.6rem 0rem 0rem 0.5rem;
         display: flex;
         height: 100%;
     }
+}
+
+
+
+/* loader animations */
+
+
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+}
+.loader {
+  color: #0dc5c1;
+  /* font-size: 11px; */
+  font-size: 2.7px;
+  text-indent: -99999em;
+  /* margin: 55px auto; */
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+}
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: #fff;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.1em 5.1em;
+  transform-origin: 5.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  /* background: #0dc5c1; */
+  background: #fff;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 4.9em;
+  -webkit-transform-origin: 0.1em 5.1em;
+  transform-origin: 0.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+@-webkit-keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

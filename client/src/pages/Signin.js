@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 import setAuthToken from '../Components/setAuthToken' ;
 import {useDispatch } from 'react-redux';
 import {setCurrentUser } from '../redux/userReducer'
-
+import Fade from 'react-reveal/Fade';
 
 
 export default function Signup() {
@@ -74,7 +74,7 @@ export default function Signup() {
                 const decoded = jwtDecode(token);
                 dispatch( setCurrentUser(decoded) );
 
-                console.log(decoded);
+                // console.log(decoded);
                 // dispatch(setCurrentUser(decoded) );
                 if(decoded.userId){
                     // <Redirect to="/dashboard" /> 
@@ -107,7 +107,7 @@ export default function Signup() {
         <Navhome page="Sign Up" />
         <section className="signin-section">
         <div className="section-signin-wrapper">
-            
+            <Fade left>
             <div className="signin-img">
                 <div className="signup-lottie" ref={container}>
                 </div>
@@ -115,7 +115,8 @@ export default function Signup() {
                     Not a Member ? &nbsp; <Link to="/signup">Signup here</Link> 
                 </div>
             </div>
-
+            </Fade>
+            <Fade right>
             <div className="signin-form-div">
             <form  method="POST" onSubmit={handleSubmit} >
                 <div className="signup-form-heading">
@@ -170,6 +171,7 @@ export default function Signup() {
                 <div className="login-option-onSignup">Not a Member ? &nbsp;<Link to="signup">Signup here</Link></div>
             </form>
             </div>
+            </Fade>
         </div>
         </section>
     </>
