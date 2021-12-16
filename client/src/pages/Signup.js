@@ -41,7 +41,11 @@ export default function Signup() {
     function handleChange(e) {
         setIsAllFieldsSet(false)
         setDisplayUserAlreadyExsits(false)
-        const { name, value } = e.target;
+        var { name, value } = e.target;
+        // below lines are in development phase
+        // if( name === 'email'){
+        //     value = value.toLowerCase();
+        // }
         setInputs(inputs => ({ ...inputs, [name]: value }));
         if( name === 'confirmPassword'){
             setIsPasswordMatching(false)
@@ -66,6 +70,7 @@ export default function Signup() {
 
             }
         }
+        
 
     }
 
