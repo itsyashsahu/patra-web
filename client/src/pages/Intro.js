@@ -88,6 +88,18 @@ export default function Intro() {
                     </div>
                 </div>
                 </Fade>
+                <div class="aboutNfeedback-NavMobile-section">
+                    <div class="aboutme">
+                        <Link to="/aboutus">
+                            About Me
+                        </Link>
+                    </div>
+                    <div class="feedback">
+                        <Link to="#">
+                            Feedback
+                        </Link>
+                    </div>
+                </div>
 
             </div>
         </section>

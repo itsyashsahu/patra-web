@@ -1,10 +1,24 @@
-
-
-.about-section,
+.about-section{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 89vh;
+}
+.about-section{
+    /* flex-direction: column;
+    display: flex; */
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
 .about-section-wrapper{
     display: flex;
+    height:89vh;
+    min-height: min-content;
+
+}
+.about-section,
+.about-section-wrapper{
+    /* display: flex; */
     width: 100vw;
-    height:83vh
 }
 .about-section-wrapper > *{
     display: flex;
@@ -80,8 +94,60 @@
 .about-email i{
     color:#fff;
 }
+.about-section > :nth-child(2){
+    flex-direction: row-reverse ;
+}
+.about-section-patraDes{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column
+}
+.about-section-patraDes div  {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-content: center; */
+    margin: 0 4rem;
+}
+.about-section-patraDes :first-child div i{
+    margin:auto 0;
+    font-size:1.1rem
+}
+.about-section-patraDes :first-child div {
+    margin:2rem 0;
+    display: flex;
+}
+.about-section-patraDes :last-child div {
+    margin-bottom:2rem;
+}
+.about-patraDes-Heading{
+    font-weight:bold;
+    letter-spacing:0.1rem;
+    /* word-spacing: 0.4rem; */
+}
+.about-section::-webkit-scrollbar{
+    width:2px;
+}
+.about-section::-webkit-scrollbar-thumb{
+    background: #DC2626;
+    /* width:5px; */
+}
+.about-section::-webkit-scrollbar-track{
+    background: #fff;
+}
+@media screen and (max-width: 35rem) {
 
+    .about-section-patraDes div {
+        margin:0 1rem;
+    }
+}
 @media screen and (max-width: 58rem) {
+    .about-section > :nth-child(2){
+        flex-direction: column;
+    }
+    .about-section-wrapper{
+        height: min-content;
+    }
     .about-section, .about-section-wrapper {
         flex-direction: column;
     }
@@ -89,9 +155,8 @@
         margin: 6rem 0;
     }
     .about-section-description{
-        padding-bottom: 6rem;
+        /* padding-bottom: 6rem; */
         margin:0 !important;
-
     }
     .about-section-description > :first-child{
         padding-right: 3rem;

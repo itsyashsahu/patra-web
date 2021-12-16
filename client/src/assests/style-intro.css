@@ -1,3 +1,8 @@
+.intro-section{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 89vh;
+}
 .intro-section-wrapper{
     display: flex;
     /* grid-template-columns: 1fr 1fr; */
@@ -81,20 +86,16 @@
     width: 1.8rem;
     transform: rotate(180deg);
 }
-/* 
-@media screen and (max-width: 60rem) {
-    .intro-frontBanner-description {
-        padding: 10rem 0 2rem 4rem;
-    }
-    .intro-frontBanner-img {
-        padding: 4rem 2rem 3rem 2rem;
-    }
+.intro-section::-webkit-scrollbar{
+    width:2px;
 }
-@media screen and (max-width: 55rem) {
-    .intro-frontBanner-description {
-        padding: 10rem 0 2rem 1rem;
-    }
-}*/
+.intro-section::-webkit-scrollbar-thumb{
+    background: #DC2626;
+    /* width:5px; */
+}
+.intro-section::-webkit-scrollbar-track{
+    background: #fff;
+}
 @media screen and (max-width: 48rem) {
     .intro-section-wrapper{
         /* display: none; */

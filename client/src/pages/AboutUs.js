@@ -1,10 +1,12 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import Navhome from '../Components/Navhome'
 import '../assests/style-about.css'
 import img from "../assests/yash.jpg"
 import {Link} from 'react-router-dom';
 import { ExternalLink } from 'react-external-link';
 import Fade from 'react-reveal/Fade';
+import lottie from "lottie-web";
+
 
 export default function AboutUs() {
     const [ showDetails , setshowDetails ] = useState(false)
@@ -13,6 +15,17 @@ export default function AboutUs() {
         setshowDetails(false)
         setshowDetailsPhone(false)
     }
+    const container = useRef(null)
+    useEffect( () => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer:'svg',
+            loop: true ,
+            autoplay:true,
+            animationData: require('../assests/lotties/60586-developer-isometric-people-working-with-technology.json')
+        })
+    },[])
+
     return (
         <>
             <Navhome page="LogIn"/>
@@ -94,7 +107,7 @@ export default function AboutUs() {
                             </div>
                             <span>
                                 Project Patra is created out of curosity to test my web-dev skills, 
-                                <br/>This is my first ever personal project. 
+                                <br/>This is my first ever personal project. &nbsp;
                             </span>
                             <span>
                                 Currently pursuing my B.tech in Computer Science and Engineering from <br/>
@@ -133,8 +146,88 @@ export default function AboutUs() {
 
                         </div>
                         </Fade>
+
                     </div>
 
+                </div>
+                <div className="about-section-wrapper">
+                    <Fade right>
+                        <div>
+                            <div ref={container} >
+
+                            </div>
+                        </div>
+                    </Fade>
+                    <div class="about-section-patraDes">
+                        <Fade left>
+                        <div>
+                            <div>
+                                <span className="about-patraDes-Heading">
+                                    Some Key Highlights of Project Patra
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    Single page smooth switching between components using React 
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    Accomplised Responsiveness using CSS
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    Retrived Real Market Data using Alpha Vantage API
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    Beautiful Animation using React-reveal, CSS Animations and Lottie Flies.
+                                    Special Thanks to <ExternalLink href='#'>Lotties Flies</ExternalLink>
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    State Management using Redux
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    CURD Operations using RESTFULL API created with the help of Node And Express
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    Secure login and Hashed Password using JWT tokens & Bcrypt.js .
+                                </span>
+                            </div>
+                        </div>
+
+                        </Fade>
+
+                        <div class="aboutNfeedback-NavMobile-section">
+                            <div class="aboutme">
+                                <Link to="/signin">
+                                    Sign in
+                                </Link>
+                            </div>
+                            <div class="feedback">
+                                <Link to="#">
+                                    Feedback
+                                </Link>
+                            </div>
+                        </div>
+
+                    </div>
+                    
                 </div>
             </section>
         </>

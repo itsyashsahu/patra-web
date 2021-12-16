@@ -92,7 +92,7 @@ export default function Holding() {
                     
                 </div>
                 <div className="holdings-totaldaypnl">
-                    <div className="holdings-totaldaypnl-label">Today's P&L</div>
+                    <div className="holdings-totaldaypnl-label">Total P&L</div>
                     <div className="numberFont">{totalPnl}</div>
                     <div className="numberFont" >{ Math.round( ( ( ( totalPnl )/investedAmount )*100 ) * 100) / 100}%</div>
                 </div>

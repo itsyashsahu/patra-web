@@ -39,7 +39,10 @@ export default function Signup() {
     const { email, password } = inputs;
     // console.log(inputs);
     function handleChange(e) {
-        const { name, value } = e.target;
+        var { name, value } = e.target;
+        if(name === 'email'){
+            value = value.toLowerCase();
+        }
         setInputs(inputs => ({ ...inputs, [name]: value }));
         setdisplayFlex(false);
         // console.log(e.target)
@@ -172,6 +175,19 @@ export default function Signup() {
             </form>
             </div>
             </Fade>
+
+        <div class="aboutNfeedback-NavMobile-section">
+            <div class="aboutme">
+                <Link to="/aboutus">
+                    About Me
+                </Link>
+            </div>
+            <div class="feedback">
+                <Link to="#">
+                    Feedback
+                </Link>
+            </div>
+        </div>
         </div>
         </section>
     </>

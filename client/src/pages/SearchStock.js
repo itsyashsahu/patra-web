@@ -11,6 +11,14 @@ import Fade from 'react-reveal/Fade';
 // import {getPriceData} 
 import lottie from "lottie-web";
 
+function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+}
+
 
 export default function SearchStock() {
 
@@ -27,6 +35,20 @@ export default function SearchStock() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+
+    // the below code get the window diamensions on everychange as well 
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+    useEffect(() => {
+        function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // console.log("this is windwos diemensions",windowDimensions)
 
     var addStockData ;
     var [ addStockDataState , setAddStockDataState ] = useState()
@@ -130,7 +152,13 @@ export default function SearchStock() {
                             // console.log("this it result of get price data of add stock ",res);
                             addStockArr={ ...addStockArr,...res}
                             setIsLoading(false)
-                            history.push('./watchlist');
+                            if(windowDimensions.width>1008){
+                                history.push('./searchstock');
+
+                            }else{
+
+                                history.push('./watchlist');
+                            }
                         })
                         
                         dispatch( setWatchlist( addStockArr ) )
@@ -204,7 +232,7 @@ export default function SearchStock() {
                         })
 
                         // console.log("the stock ",searchResults[index]["2. name"],"and the result ",isStockFound)
-                        console.log("the results is ",addStockDataState)
+                        // console.log("the results is ",addStockDataState)
                         return(
                             <>
                             <Fade top>

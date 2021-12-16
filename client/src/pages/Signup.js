@@ -43,9 +43,9 @@ export default function Signup() {
         setDisplayUserAlreadyExsits(false)
         var { name, value } = e.target;
         // below lines are in development phase
-        // if( name === 'email'){
-        //     value = value.toLowerCase();
-        // }
+        if( name === 'email'){
+            value = value.toLowerCase();
+        }
         setInputs(inputs => ({ ...inputs, [name]: value }));
         if( name === 'confirmPassword'){
             setIsPasswordMatching(false)
@@ -76,6 +76,7 @@ export default function Signup() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        
         // console.log("why", (phone.length>=10 && phone.length<=11) )
         if(isPasswordMatching && phone.length>=10 && phone.length<=11){
             axios.post('api/users', inputs)
@@ -252,50 +253,6 @@ export default function Signup() {
                             </Fade>
 
                     }
-                    {/* <div className="form-credentials signup-form-input">
-                        <div>
-                            <i className="ri-user-fill"></i>
-                            <input type="text" name="name" 
-                            value={name} onChange={handleChange}
-                            placeholder="Your Name" required/>
-                        </div>
-                    </div>
-                    <div className="form-credentials signup-form-input">
-                        <div>
-                            <i className="ri-mail-fill"></i> 
-                            <input type="text" name="email" 
-                            value={email} onChange={handleChange} autoComplete="off"
-                            placeholder="Your E-mail" required/>
-                        </div>
-                    </div>
-                    <div className="form-credentials signup-form-input">
-                        <div>
-                            <i className="ri-lock-2-fill"></i> 
-                            <input type="password" name="password" autoComplete="off"
-                            value={password} onChange={handleChange}
-                            placeholder="Password" required/>
-                        </div>
-                    </div>
-                    <div className="form-credentials signup-form-input">
-                        <div>
-                            <i className="ri-lock-2-line"></i> 
-                            <input type="password" name="confirmPassword" 
-                            value={confirmPassword} onChange={handleChange}
-                            placeholder="Confirm Password" required />
-                        </div>
-                    </div>
-                    <div className="form-credentials checkbox-agree-hidden">
-                        <div>
-                            <input type="checkbox" className="checkbox-agree-input" name="agreeTnc" placeholder="Repeat Your Password" required/>
-                            <div>I agree to &nbsp;<Link to="#"> Terms & Conditions</Link></div>
-                        </div>
-                    </div>
-                    <div className="form-credentials signup-submit ">
-                        <div>
-                            <button type="submit" name="signup" id="signup" 
-                            value="Register">Register</button>
-                        </div>
-                    </div> */}
 
                     {/* this will be displayed when the website is in mobile view */}
                     <div className="login-option-onSignup">Or, I am already a Member ? &nbsp;<Link to="/signin">Login here</Link></div>
@@ -336,6 +293,18 @@ export default function Signup() {
             </div>
             </Fade>
         </div>
+            <div class="aboutNfeedback-NavMobile-section">
+                <div class="aboutme">
+                    <Link to="/aboutus">
+                        About Me
+                    </Link>
+                </div>
+                <div class="feedback">
+                    <Link to="#">
+                        Feedback
+                    </Link>
+                </div>
+            </div>
         </section>
     </>
     )

@@ -164,7 +164,7 @@
     box-sizing: border-box;
   }
   
-  body {
+  #centreTheAnim{
     min-height: 95vh;
     font-family: Roboto, Arial;
     color: #ADAFB6;
@@ -173,13 +173,13 @@
     align-items: center;
     background: #F9FBFF;
   }
-  body .dribbble {
+  .centreTheAnim .dribbble {
     position: fixed;
     display: block;
     right: 20px;
     bottom: 20px;
   }
-  body .dribbble img {
+  .centreTheAnim .dribbble img {
     display: block;
     height: 28px;
   }
