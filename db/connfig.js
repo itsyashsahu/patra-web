@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-// const connectString = process.env.SECRET_KEY;
-const connectString = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
+const connectString = process.env.SECRET_KEY;
+// const connectString = "mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false"
 
 mongoose.connect(connectString,{
     useNewUrlParser:true,
