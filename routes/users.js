@@ -30,7 +30,7 @@ router.get('/getinfo',requireLogin, async function(req, res, next) {
   try{
     const user = await User.findById({"_id": id },{name:1,_id:0,fundsAvailable:1,proffession:1})
         .then( (res)=>{
-            console.log("this is result of get userData",res);
+            // console.log("this is result of get userData",res);
             return res
         })
         .catch( (err) =>{
@@ -79,7 +79,7 @@ router.post('/updateinfo',requireLogin, async function(req, res, next) {
   try{
     const userInfo = await User.findById({"_id": id },{name:1,_id:0,phone:1,proffession:1,gender:1,dob:1})
         .then( (res)=>{
-            console.log("this is result of get find edit user data",res);
+            // console.log("this is result of get find edit user data",res);
             return res
         })
         .catch( (err) =>{
@@ -95,7 +95,7 @@ router.post('/updateinfo',requireLogin, async function(req, res, next) {
       if(inputs.proffession){ proffession = inputs.proffession}
       if(inputs.dob){ dob = inputs.dob}
       if(inputs.phone){ phone = inputs.phone}
-      console.log(name,proffession,dob,phone,gender );
+      // console.log(name,proffession,dob,phone,gender );
 
 
 
@@ -112,7 +112,7 @@ router.post('/updateinfo',requireLogin, async function(req, res, next) {
               { upsert : true }
               )
         .then( (res)=>{
-            console.log("this is result of Update userData",res,req.body);
+            // console.log("this is result of Update userData",res,req.body);
             return res
         })
         .catch( (err) =>{
@@ -138,7 +138,7 @@ router.post('/', async function(req, res, next) {
   try{
     
     const { name,email,password,proffession,dob,gender,phone } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     // console.log(name,email,password);
     if(!email || !password ){
       // status 422 means client jo karna chahta h wo server samajh gaya h 
@@ -203,7 +203,7 @@ router.post('/signin', async function(req, res, next) {
 
     if(doMatch){
       // generating jwt token 
-      console.log("do match is true",user.name)
+      // console.log("do match is true",user.name)
       const token = await jwt.sign({userId:user._id},JWT_SECRET);
       return res.status(201).json({token});
     }else{

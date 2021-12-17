@@ -215,8 +215,8 @@ export default function Dashboard() {
 
     return (
         <div className="dashboard">
-                <Fade right>
                 {/* <form  method="POST" onSubmit={handleSubmit} > */}
+                <Fade right>
                 <div className='dashboard-area'>
 
                     <div className="dashboard-text salsa name">
@@ -414,8 +414,8 @@ export default function Dashboard() {
 
                 </div>
 
-                <NavbarMobile/>
             </Fade>
+                <NavbarMobile/>
             </div>
     )
 }

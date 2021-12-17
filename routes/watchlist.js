@@ -35,7 +35,7 @@ var watchlists ;
 router.get('/',requireLogin, async function (req, res, next){
     // var id = req.body.userId;
     var id = req.user;
-    console.log(req.user);
+    // console.log(req.user);
     try{
         // console.log(id);
         // console.log(id);

@@ -285,7 +285,11 @@ export default function Watchlist() {
             }
 
             </div>
+            </Fade>
+
             <div>
+            <Fade left>
+
             <div className="watchlist-item-caution numberFont">
                     The Api supports only 5 calls per minute please make sure your holdings and watchlist combined have 5 entries to ensure proper working. The Prices will update next working day.
             </div>
@@ -296,9 +300,10 @@ export default function Watchlist() {
                 <div className="watchlist-nav-items"><Link to="#">4</Link></div>
                 <div className="watchlist-nav-items"><Link to="#">5</Link></div>
             </div>
+
+            </Fade>
             {(mobile==='watchlistMobile')?<NavbarMobile/>:null}
             </div>
-            </Fade>
         </div>
     )
 }

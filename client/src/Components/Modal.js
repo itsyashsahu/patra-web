@@ -250,8 +250,8 @@ export default function Modal() {
                                 (stockData.option==="buy")?
                                 <>
                                 <span>Margin Required : <p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{Math.round( (qty*currPrice) * 100) / 100}</p> </span>
-                                <span>funds Available : <p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{ user.fundsAvailable }</p> </span>
-                                <span>Balance After transaction:<p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{user.fundsAvailable - (Math.round( (qty*currPrice) * 100) / 100)}</p>  </span>
+                                <span>funds Available : <p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{ (Math.round( (user.fundsAvailable) * 100) / 100) }</p> </span>
+                                <span>Balance After transaction:<p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{ (Math.round( ( user.fundsAvailable -  (qty*currPrice)) * 100) / 100)}</p>  </span>
                                 </>
                                 :null 
                             }
@@ -261,7 +261,7 @@ export default function Modal() {
                                 <span>Stocks Hold : <p className='numberFont'>{(stock)?stock.qty:'0 You Cannot Execute This Transaction'}</p> </span> 
                                 <span>Ttl. Sell Value : <p className='numberFont'>{Math.round( (qty*currPrice) * 100) / 100}</p> </span>
                                 {/* <span>Balance After transaction:funds+Ttl Sold Value </span> */}
-                                <span>Balance After transaction:&nbsp;&nbsp;₹&nbsp;{user.fundsAvailable + (Math.round( (qty*currPrice) * 100) / 100)} </span>
+                                <span>Balance After transaction:<p className='numberFont'>&nbsp;&nbsp;₹&nbsp;{ (Math.round(  ( user.fundsAvailable + (qty*currPrice)) * 100) / 100)}</p> </span>
                                 
                                 </>
                                 :null 

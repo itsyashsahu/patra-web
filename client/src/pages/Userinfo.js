@@ -230,7 +230,7 @@ export default function Userinfo() {
                             <div> Funds </div>
                             <div className="userInfo-split-details" >
                                 <span to="#"> Funds Available </span>
-                                <span className="numberFont" to="#"> ₹&nbsp;{user.fundsAvailable} </span>
+                                <span className="numberFont" to="#"> ₹&nbsp;{(Math.round( (user.fundsAvailable) * 100) / 100) } </span>
                             </div>
                             {/* <div className="userInfo-split-details" >
                                 <Link to="#"> Funds Used </Link>

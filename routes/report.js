@@ -29,7 +29,7 @@ const requireLogin = (req,res,next) => {
 router.get('/',requireLogin, async function(req, res, next) {
     // var id = req.body.userId;
     var id = req.user;
-    console.log("request for reports",id);
+    // console.log("request for reports",id);
     try{
         const user = await User.findById({"_id": id },{reports:1,_id:0})
         .then( (res)=>{
