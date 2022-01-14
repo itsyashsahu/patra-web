@@ -8,6 +8,8 @@ This app is Deployed on Heroku Go Check it out
 
 Link -->> https://patra-webapplication.herokuapp.com/
 
+<br/>
+<br/>
 
 You Will Be -- 
 
@@ -44,9 +46,13 @@ Some key Features of project Patra
 --> Installable Progresses web app using customized service worker, workbox, and web push.
 
 --> Data Stored in MonogoDB Atlas.
+<br/>
+<br/>
+<br/>
+<br/>
 
 
-
+Guide Tutorial and Screenshots of the platform
 
 Landing Page
 
