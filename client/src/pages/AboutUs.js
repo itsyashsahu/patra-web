@@ -169,12 +169,6 @@ export default function AboutUs() {
                             <div>
                                 <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
                                 <span>
-                                    Single page smooth switching between components using React 
-                                </span>
-                            </div>
-                            <div>
-                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
-                                <span>
                                     Accomplised Responsiveness using CSS
                                 </span>
                             </div>
@@ -207,6 +201,12 @@ export default function AboutUs() {
                                 <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
                                 <span>
                                     Secure login and Hashed Password using JWT tokens & Bcrypt.js .
+                                </span>
+                            </div>
+                            <div>
+                                <i class="ri-code-fill"></i>&nbsp;&nbsp;&nbsp;
+                                <span>
+                                    Data Stored in MonogoDB Atlas. 
                                 </span>
                             </div>
                         </div>
