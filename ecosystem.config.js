@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "Unsung",
-      script: "app.js",
+      name: "Hello World",
+      script: "index.js",
       instance: 0,
       autorestart: true,
       exec_mode: "cluster",
