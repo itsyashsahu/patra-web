@@ -24,7 +24,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.1",
     "nodemon": "^2.0.15",
-    "pm2": "^5.2.0",
-    "react-reveal": "^1.2.2"
+    "pm2": "^5.2.0"
   }
 }
