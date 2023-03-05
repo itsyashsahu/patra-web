@@ -6,7 +6,8 @@ It is simulaiton of Indian stock Markets with real data fetched from Alpha Vanta
 
 This app is Deployed on Heroku Go Check it out
 
-Link -->> https://patra-webapplication.herokuapp.com/
+Link -->> https://patra-web.vercel.app/
+
 
 <br/>
 <br/>
